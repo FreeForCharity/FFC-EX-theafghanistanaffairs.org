@@ -59,7 +59,7 @@ export default function ArticlesPage() {
                     )}
                   </div>
                   <h2
-                    dir="auto"
+                    dir={a.language === 'en' ? undefined : 'rtl'}
                     lang={a.language !== 'en' ? a.language : undefined}
                     className={`mt-2 text-[20px] font-[600] leading-snug text-[#0e2742] lg:text-[22px] ${
                       a.language === 'en' ? 'font-display' : 'font-naskh'
