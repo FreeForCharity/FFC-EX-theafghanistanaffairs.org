@@ -19,6 +19,7 @@ jest.mock('next/font/google', () => {
     Fauna_One: echo,
     Montserrat: echo,
     Cinzel: echo,
+    Playfair_Display: echo,
   }
 })
 

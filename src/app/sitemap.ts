@@ -1,7 +1,13 @@
 import type { MetadataRoute } from 'next'
 import { siteUrl } from '@/lib/site.config'
+import { articles } from '@/data/articles'
 
 export const dynamic = 'force-static'
+
+// Route segment used for the per-article dynamic page. Listed in `routes`
+// below so the sitemap audit test stays in lockstep with the filesystem, then
+// expanded into one URL per article in the default export.
+const ARTICLE_DYNAMIC_PATH = '/articles/[slug]'
 
 type SitemapEntry = {
   path: string
@@ -25,6 +31,8 @@ type SitemapEntry = {
 // changeFrequency: 'monthly' for content pages, 'yearly' for policy pages.
 export const routes: readonly SitemapEntry[] = [
   { path: '/', changeFrequency: 'weekly', priority: 1.0 },
+  { path: '/articles', changeFrequency: 'weekly', priority: 0.8 },
+  { path: ARTICLE_DYNAMIC_PATH, changeFrequency: 'monthly', priority: 0.5 },
   { path: '/privacy-policy', changeFrequency: 'yearly', priority: 0.2 },
   { path: '/cookie-policy', changeFrequency: 'yearly', priority: 0.2 },
   { path: '/terms-of-service', changeFrequency: 'yearly', priority: 0.2 },
@@ -36,10 +44,17 @@ export const routes: readonly SitemapEntry[] = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
-  return routes.map((entry) => ({
-    url: siteUrl(entry.path),
-    lastModified: now,
-    changeFrequency: entry.changeFrequency,
-    priority: entry.priority,
-  }))
+  return routes.flatMap((entry) => {
+    // Expand the dynamic article route into one concrete URL per article.
+    const paths =
+      entry.path === ARTICLE_DYNAMIC_PATH
+        ? articles.map((a) => `/articles/${a.slug}`)
+        : [entry.path]
+    return paths.map((path) => ({
+      url: siteUrl(path),
+      lastModified: now,
+      changeFrequency: entry.changeFrequency,
+      priority: entry.priority,
+    }))
+  })
 }

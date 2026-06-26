@@ -2,10 +2,16 @@
 @import 'tailwindcss';
 
 :root {
-  /* Brand tokens */
-  --ffc-primary: #2a6682;
-  --ffc-accent: #f58629;
-  --ffc-yellow: #f5c045;
+  /* Brand tokens — The Afghanistan Affairs (navy + gold research-institute palette) */
+  --ffc-primary: #0e2742; /* deep navy */
+  --ffc-navy-deep: #0a1f38;
+  --ffc-navy-soft: #1a3a5c;
+  --ffc-accent: #c79a3b; /* gold */
+  --ffc-gold-soft: #d9b969;
+  --ffc-yellow: #c79a3b;
+  --ffc-ink: #1a2433;
+  --ffc-slate: #5b6b7f;
+  --ffc-line: #e3e8ee;
   --ffc-black: #000000;
   --ffc-white: #ffffff;
 
@@ -22,24 +28,41 @@ body {
 @theme inline {
   /* Tailwind design tokens mapped to brand variables */
   --color-primary: var(--ffc-primary);
+  --color-navy: var(--ffc-primary);
+  --color-navy-deep: var(--ffc-navy-deep);
+  --color-navy-soft: var(--ffc-navy-soft);
   --color-accent: var(--ffc-accent);
+  --color-gold: var(--ffc-accent);
+  --color-gold-soft: var(--ffc-gold-soft);
   --color-yellow: var(--ffc-yellow);
-  --color-ink: var(--ffc-black);
+  --color-ink: var(--ffc-ink);
+  --color-slate: var(--ffc-slate);
+  --color-line: var(--ffc-line);
   --color-paper: var(--ffc-white);
 
   --radius-xl: var(--ffc-radius-xl);
   --container: var(--ffc-container);
 
   /* Fonts (provided via next/font and CSS variables on <body>) */
-  --font-serif-display: var(--font-faustina);
-  --font-serif: var(--font-fauna-one);
-  --font-sans: var(--font-lato);
+  --font-serif-display: var(--font-playfair-display);
+  --font-serif: var(--font-playfair-display);
+  --font-sans: var(--font-open-sans);
 }
 
 body {
-  font-family: var(--font-faustina), serif !important;
+  font-family: var(--font-open-sans), system-ui, sans-serif;
   background: var(--color-paper);
   color: var(--color-ink);
+}
+
+/* Serif display utility for headings (matches the design doc). */
+.font-display {
+  font-family: var(--font-playfair-display), Georgia, serif;
+}
+
+/* Right-to-left content blocks for Pashto / Dari articles. */
+[dir='rtl'] {
+  text-align: right;
 }
 #header {
   font-family: var(--font-open-sans), sans-serif !important;

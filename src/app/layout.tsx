@@ -15,6 +15,7 @@ import {
   faunaOne,
   montserrat,
   cinzel,
+  playfairDisplay,
 } from '@/lib/fonts'
 
 const defaultTitle = `${siteConfig.name} | ${siteConfig.tagline}`
@@ -106,14 +107,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.zeffy.com" />
         <link rel="dns-prefetch" href="https://www.idealist.org" />
 
-        {/* Preload critical LCP image */}
-        <link
-          rel="preload"
-          as="image"
-          href={assetPath('/Images/figma-hero-img.webp')}
-          fetchPriority="high"
-        />
-
         <GoogleTagManager />
       </head>
       <body
@@ -127,6 +120,7 @@ export default function RootLayout({
           faunaOne.variable,
           montserrat.variable,
           cinzel.variable,
+          playfairDisplay.variable,
         ].join(' ')}
         suppressHydrationWarning={true}
       >

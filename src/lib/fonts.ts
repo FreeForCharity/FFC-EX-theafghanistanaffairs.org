@@ -7,7 +7,17 @@ import {
   Fauna_One,
   Montserrat,
   Cinzel,
+  Playfair_Display,
 } from 'next/font/google'
+
+// Serif display face for The Afghanistan Affairs headings (matches the
+// research-institute design direction — see the homepage design doc).
+export const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair-display',
+  weight: ['400', '500', '600', '700', '800'],
+})
 
 // Configure fonts with proper subsets and display strategy
 export const openSans = Open_Sans({
