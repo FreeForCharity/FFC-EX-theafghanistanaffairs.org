@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { ArrowRight, FileText } from 'lucide-react'
+import ArticleThumb from '@/components/ui/ArticleThumb'
 import { articlesByType, articleTypeLabel, formatArticleDate, type Article } from '@/data/articles'
 
 function initials(name: string): string {
@@ -23,7 +24,7 @@ const SectionLink = ({ href }: { href: string }) => (
 
 const AnalysisCard = ({ a }: { a: Article }) => (
   <article className="flex flex-col border border-[#e3e8ee] bg-white shadow-sm">
-    <div className="aspect-[16/10] w-full bg-gradient-to-br from-[#15355a] to-[#0a1f38]" />
+    <ArticleThumb area={a.area} className="aspect-[16/10] w-full" />
     <div className="flex flex-1 flex-col p-5">
       <span className="mb-2 text-[11px] font-[700] uppercase tracking-[0.16em] text-[#c79a3b]">
         {articleTypeLabel[a.type]}

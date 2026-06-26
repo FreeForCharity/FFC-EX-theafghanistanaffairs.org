@@ -20,6 +20,7 @@ jest.mock('next/font/google', () => {
     Montserrat: echo,
     Cinzel: echo,
     Playfair_Display: echo,
+    Noto_Naskh_Arabic: echo,
   }
 })
 

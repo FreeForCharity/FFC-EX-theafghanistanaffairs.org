@@ -64,6 +64,11 @@ body {
 [dir='rtl'] {
   text-align: right;
 }
+
+/* Naskh (Arabic-script) face for Pashto / Dari article content. */
+.font-naskh {
+  font-family: var(--font-noto-naskh), 'Noto Naskh Arabic', 'Scheherazade New', serif;
+}
 #header {
   font-family: var(--font-open-sans), sans-serif !important;
 }

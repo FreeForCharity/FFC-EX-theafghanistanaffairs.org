@@ -58,7 +58,12 @@ export default function ArticlesPage() {
                       </>
                     )}
                   </div>
-                  <h2 className="mt-2 font-display text-[20px] font-[600] leading-snug text-[#0e2742] lg:text-[22px]">
+                  <h2
+                    dir="auto"
+                    className={`mt-2 text-[20px] font-[600] leading-snug text-[#0e2742] lg:text-[22px] ${
+                      a.language === 'en' ? 'font-display' : 'font-naskh'
+                    }`}
+                  >
                     {a.title}
                   </h2>
                   <p className="mt-2 max-w-[820px] text-[14px] leading-relaxed text-[#5b6b7f]">

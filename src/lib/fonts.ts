@@ -8,6 +8,7 @@ import {
   Montserrat,
   Cinzel,
   Playfair_Display,
+  Noto_Naskh_Arabic,
 } from 'next/font/google'
 
 // Serif display face for The Afghanistan Affairs headings (matches the
@@ -17,6 +18,15 @@ export const playfairDisplay = Playfair_Display({
   display: 'swap',
   variable: '--font-playfair-display',
   weight: ['400', '500', '600', '700', '800'],
+})
+
+// Naskh face for Pashto / Dari (Arabic-script) article content so RTL posts
+// render with proper, legible Arabic typography rather than a fallback.
+export const notoNaskhArabic = Noto_Naskh_Arabic({
+  subsets: ['arabic'],
+  display: 'swap',
+  variable: '--font-noto-naskh',
+  weight: ['400', '500', '600', '700'],
 })
 
 // Configure fonts with proper subsets and display strategy

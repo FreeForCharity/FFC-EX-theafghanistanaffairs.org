@@ -66,7 +66,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             )}
           </div>
           <h1
-            className="mt-4 font-display text-[30px] font-[700] leading-tight lg:text-[40px]"
+            className={`mt-4 text-[30px] font-[700] leading-tight lg:text-[40px] ${
+              isRtl ? 'font-naskh' : 'font-display'
+            }`}
             dir={isRtl ? 'rtl' : undefined}
           >
             {article.title}
@@ -79,18 +81,31 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       {/* Body */}
       <div className="bg-white py-12">
-        <div className="mx-auto max-w-[820px] px-4" dir={isRtl ? 'rtl' : undefined}>
+        <div className="mx-auto max-w-[820px] px-4">
+          {/* English standfirst/deck — always LTR, even for RTL articles */}
           <p className="font-display text-[20px] leading-relaxed text-[#1a2433]">
             {article.excerpt}
           </p>
 
           {body ? (
-            <div className="mt-8 space-y-5">
-              {body.map((para, i) => (
-                <p key={i} className="text-[17px] leading-[1.8] text-[#26303d]">
-                  {para}
-                </p>
-              ))}
+            <>
+              <div
+                className={`mt-8 ${isRtl ? 'space-y-6 font-naskh' : 'space-y-5'}`}
+                dir={isRtl ? 'rtl' : undefined}
+              >
+                {body.map((para, i) => (
+                  <p
+                    key={i}
+                    className={
+                      isRtl
+                        ? 'text-[19px] leading-[2.15] text-[#26303d]'
+                        : 'text-[17px] leading-[1.8] text-[#26303d]'
+                    }
+                  >
+                    {para}
+                  </p>
+                ))}
+              </div>
               <p className="mt-10 border-t border-[#e3e8ee] pt-6 text-[13px] text-[#5b6b7f]">
                 Originally published on{' '}
                 <a
@@ -103,7 +118,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 </a>
                 .
               </p>
-            </div>
+            </>
           ) : (
             <div className="mt-10 border-t border-[#e3e8ee] pt-8">
               <p className="text-[15px] leading-relaxed text-[#5b6b7f]">
