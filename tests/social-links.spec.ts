@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { testConfig } from './test.config'
 
 /**
  * Social Links Tests
@@ -21,18 +22,26 @@ test.describe('Footer Social Links', () => {
     }
   })
 
-  test('any rendered social links are well-formed', async ({ page }) => {
+  test('any rendered social links are well-formed and use allowed labels', async ({ page }) => {
     await page.goto('/')
 
-    // Social icons live in the brand column and open in a new tab.
-    const socialLinks = page.locator('footer a[target="_blank"][aria-label]')
+    // Social icons live in the brand column, open in a new tab, and carry an
+    // aria-label. They share that shape with no other footer link, so this
+    // locator targets exactly the social set (currently empty until official
+    // profile URLs are added to siteConfig.social).
+    const socialLinks = page.locator(
+      'footer a[target="_blank"][rel*="noopener"][aria-label]:not([href^="mailto:"])'
+    )
     const count = await socialLinks.count()
 
     for (let i = 0; i < count; i++) {
       const link = socialLinks.nth(i)
-      await expect(link).toHaveAttribute('rel', /noopener/)
       const href = await link.getAttribute('href')
       expect(href && href.startsWith('https://')).toBeTruthy()
+
+      // Only the approved platform labels should reach the footer.
+      const label = await link.getAttribute('aria-label')
+      expect(testConfig.socialLinks.expectedLabels).toContain(label)
     }
   })
 })

@@ -41,8 +41,18 @@ test.describe('Events Section', () => {
     await expect(footerEventsLink).toContainText(testConfig.events.footerLinkText)
 
     await footerEventsLink.click()
-    await page.waitForTimeout(400)
-    await expect(page.locator(`#${testConfig.events.sectionId}`)).toBeVisible()
+
+    // The hash should update and the section should scroll near the top of the
+    // viewport — `toBeVisible()` alone would pass even without any scroll.
+    await expect(page).toHaveURL(new RegExp(`#${testConfig.events.sectionId}$`))
+    const section = page.locator(`#${testConfig.events.sectionId}`)
+    await expect(section).toBeVisible()
+    await expect
+      .poll(async () => {
+        const box = await section.boundingBox()
+        return box ? box.y : Number.POSITIVE_INFINITY
+      })
+      .toBeLessThan(200)
   })
 
   test('should render on a mobile viewport', async ({ page }) => {

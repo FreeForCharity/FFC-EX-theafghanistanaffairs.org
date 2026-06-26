@@ -5,6 +5,7 @@ import {
   articleTypeLabel,
   researchAreaLabel,
   formatArticleDate,
+  type ArticleLanguage,
 } from '@/data/articles'
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     'Research, analysis, policy briefs, and commentary on Afghanistan and the region from The Afghanistan Affairs.',
 }
 
-const languageLabel: Record<string, string> = {
+const languageLabel: Record<ArticleLanguage, string> = {
   en: 'English',
   ps: 'Pashto',
   fa: 'Dari',
