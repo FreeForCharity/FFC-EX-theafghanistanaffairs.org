@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, FileText } from 'lucide-react'
 import {
   featuredArticle,
-  recentArticles,
+  articlesByType,
   articleTypeLabel,
   formatArticleDate,
 } from '@/data/articles'
@@ -15,7 +15,7 @@ const SectionHeading = ({ children }: { children: React.ReactNode }) => (
 )
 
 const FeaturedResearch = () => {
-  const briefs = recentArticles(3)
+  const briefs = articlesByType('policy-brief', 3)
 
   return (
     <section id="featured-research" className="bg-white py-16 lg:py-20">
@@ -45,7 +45,7 @@ const FeaturedResearch = () => {
             </div>
           </article>
 
-          {/* Three supporting briefs */}
+          {/* Three supporting policy briefs */}
           <div className="lg:col-span-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {briefs.map((a) => (
               <article

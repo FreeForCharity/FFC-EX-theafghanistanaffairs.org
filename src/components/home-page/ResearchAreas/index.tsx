@@ -21,18 +21,18 @@ interface Area {
 }
 
 // Mirrors the nine focus areas in the design doc. Links route to the
-// publications list; per-area filtering is wired up with the /articles
-// section in a later phase.
+// publications list (/articles); per-area filtering is wired up in a
+// later phase.
 const areas: Area[] = [
-  { label: 'Governance', icon: Landmark, href: '/#latest-analysis' },
-  { label: 'Economy', icon: TrendingUp, href: '/#latest-analysis' },
-  { label: 'Security', icon: ShieldCheck, href: '/#latest-analysis' },
-  { label: 'Regional Affairs', icon: Globe2, href: '/#latest-analysis' },
-  { label: 'Human Rights', icon: Scale, href: '/#latest-analysis' },
-  { label: "Women's Rights", icon: Users, href: '/#latest-analysis' },
-  { label: 'Education', icon: GraduationCap, href: '/#latest-analysis' },
-  { label: 'Climate & Environment', icon: Leaf, href: '/#latest-analysis' },
-  { label: 'Migration & Displacement', icon: Plane, href: '/#latest-analysis' },
+  { label: 'Governance', icon: Landmark, href: '/articles' },
+  { label: 'Economy', icon: TrendingUp, href: '/articles' },
+  { label: 'Security', icon: ShieldCheck, href: '/articles' },
+  { label: 'Regional Affairs', icon: Globe2, href: '/articles' },
+  { label: 'Human Rights', icon: Scale, href: '/articles' },
+  { label: "Women's Rights", icon: Users, href: '/articles' },
+  { label: 'Education', icon: GraduationCap, href: '/articles' },
+  { label: 'Climate & Environment', icon: Leaf, href: '/articles' },
+  { label: 'Migration & Displacement', icon: Plane, href: '/articles' },
 ]
 
 const ResearchAreas = () => {
@@ -44,7 +44,7 @@ const ResearchAreas = () => {
             Research Areas
           </h2>
           <Link
-            href="/#featured-research"
+            href="/articles"
             className="inline-flex items-center gap-1 text-[12px] font-[700] uppercase tracking-wide text-[#c79a3b] hover:text-[#0e2742]"
           >
             View All Areas <ArrowRight className="h-3.5 w-3.5" />

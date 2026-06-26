@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { ArrowRight, FileText } from 'lucide-react'
-import { recentArticles, articleTypeLabel, formatArticleDate, type Article } from '@/data/articles'
+import { articlesByType, articleTypeLabel, formatArticleDate, type Article } from '@/data/articles'
 
 function initials(name: string): string {
   return name
@@ -48,9 +48,8 @@ const AnalysisCard = ({ a }: { a: Article }) => (
 )
 
 const LatestAnalysis = () => {
-  const pool = recentArticles(7)
-  const analysis = pool.slice(0, 3)
-  const briefs = pool.slice(3, 7)
+  const analysis = articlesByType('analysis', 3)
+  const briefs = articlesByType('policy-brief', 4)
 
   return (
     <section id="latest-analysis" className="bg-white py-16 lg:py-20">
@@ -62,7 +61,7 @@ const LatestAnalysis = () => {
               <h2 className="text-[14px] font-[700] uppercase tracking-[0.2em] text-[#0e2742]">
                 Latest Analysis
               </h2>
-              <SectionLink href="/#featured-research" />
+              <SectionLink href="/articles" />
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               {analysis.map((a) => (
@@ -77,7 +76,7 @@ const LatestAnalysis = () => {
               <h2 className="text-[14px] font-[700] uppercase tracking-[0.2em] text-[#0e2742]">
                 Policy Briefs
               </h2>
-              <SectionLink href="/#featured-research" />
+              <SectionLink href="/articles" />
             </div>
             <ul className="divide-y divide-[#e3e8ee] border-y border-[#e3e8ee]">
               {briefs.map((a) => (

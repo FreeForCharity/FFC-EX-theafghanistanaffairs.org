@@ -114,7 +114,7 @@ export const articles: Article[] = [
     title: 'Dealing with Poverty is Another Priority for the New Govt. in Kabul',
     date: '2015-03-16',
     area: 'economy',
-    type: 'analysis',
+    type: 'policy-brief',
     language: 'en',
     author: AUTHOR,
     excerpt:
@@ -222,7 +222,7 @@ export const articles: Article[] = [
     title: 'The Bilateral Security Agreement in Afghanistan',
     date: '2014-02-22',
     area: 'security',
-    type: 'analysis',
+    type: 'policy-brief',
     language: 'en',
     author: AUTHOR,
     excerpt:
@@ -234,7 +234,7 @@ export const articles: Article[] = [
     title: 'Fighting Poverty Today',
     date: '2014-02-22',
     area: 'economy',
-    type: 'analysis',
+    type: 'policy-brief',
     language: 'en',
     author: AUTHOR,
     excerpt:
@@ -246,7 +246,7 @@ export const articles: Article[] = [
     title: 'Perception of Corruption in Afghanistan',
     date: '2013-12-11',
     area: 'governance',
-    type: 'analysis',
+    type: 'policy-brief',
     language: 'en',
     author: AUTHOR,
     excerpt:

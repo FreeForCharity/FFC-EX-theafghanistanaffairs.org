@@ -1,8 +1,21 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import { Mail } from 'lucide-react'
 import { siteConfig } from '@/lib/site.config'
 
+// Until a hosted newsletter provider is wired up, subscription is handled by
+// email. The entered address is folded into the mailto body so the Subscribe
+// action actually reflects what the visitor typed (rather than ignoring it).
 const NewsletterCta = () => {
+  const [email, setEmail] = useState('')
+
+  const mailto = `mailto:${siteConfig.contactEmail}?subject=${encodeURIComponent(
+    'Newsletter Subscription'
+  )}&body=${encodeURIComponent(
+    `Please subscribe me to The Afghanistan Affairs newsletter${email ? `: ${email}` : '.'}`
+  )}`
+
   return (
     <section id="newsletter" className="bg-white py-14">
       <div className="mx-auto max-w-[1248px] px-4">
@@ -19,23 +32,31 @@ const NewsletterCta = () => {
             </div>
           </div>
 
-          <div className="flex w-full max-w-[460px] flex-col gap-3 sm:flex-row">
+          <form
+            className="flex w-full max-w-[460px] flex-col gap-3 sm:flex-row"
+            onSubmit={(e) => {
+              e.preventDefault()
+              window.location.href = mailto
+            }}
+          >
             <label htmlFor="newsletter-email" className="sr-only">
               Email address
             </label>
             <input
               id="newsletter-email"
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email address"
               className="w-full bg-white px-4 py-3 text-[14px] text-[#0e2742] placeholder:text-[#9aa7b6] focus:outline-none focus:ring-2 focus:ring-[#c79a3b]"
             />
-            <a
-              href={`mailto:${siteConfig.contactEmail}?subject=Newsletter%20Subscription`}
+            <button
+              type="submit"
               className="inline-flex items-center justify-center bg-[#c79a3b] px-7 py-3 text-[13px] font-[700] uppercase tracking-wide text-[#0e2742] transition-colors hover:bg-[#d9b969]"
             >
               Subscribe
-            </a>
-          </div>
+            </button>
+          </form>
         </div>
       </div>
     </section>
