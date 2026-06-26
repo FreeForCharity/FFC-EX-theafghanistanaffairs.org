@@ -9,6 +9,7 @@ import {
   formatArticleDate,
   type ArticleLanguage,
 } from '@/data/articles'
+import { articleBodies } from '@/data/article-bodies'
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }))
@@ -40,6 +41,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   if (!article) notFound()
 
   const isRtl = article.language !== 'en'
+  const body = articleBodies[article.slug]
 
   return (
     <article>
@@ -82,20 +84,42 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             {article.excerpt}
           </p>
 
-          <div className="mt-10 border-t border-[#e3e8ee] pt-8">
-            <p className="text-[15px] leading-relaxed text-[#5b6b7f]">
-              The full text of this piece is being migrated from the original publication. In the
-              meantime, you can read it in full on the legacy archive.
-            </p>
-            <a
-              href={article.sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 bg-[#0e2742] px-6 py-3 text-[13px] font-[700] uppercase tracking-wide text-white transition-colors hover:bg-[#15355a]"
-            >
-              Read the Original <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
+          {body ? (
+            <div className="mt-8 space-y-5">
+              {body.map((para, i) => (
+                <p key={i} className="text-[17px] leading-[1.8] text-[#26303d]">
+                  {para}
+                </p>
+              ))}
+              <p className="mt-10 border-t border-[#e3e8ee] pt-6 text-[13px] text-[#5b6b7f]">
+                Originally published on{' '}
+                <a
+                  href={article.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-[#c79a3b]"
+                >
+                  the legacy archive
+                </a>
+                .
+              </p>
+            </div>
+          ) : (
+            <div className="mt-10 border-t border-[#e3e8ee] pt-8">
+              <p className="text-[15px] leading-relaxed text-[#5b6b7f]">
+                The full text of this piece is being migrated from the original publication. In the
+                meantime, you can read it in full on the legacy archive.
+              </p>
+              <a
+                href={article.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 bg-[#0e2742] px-6 py-3 text-[13px] font-[700] uppercase tracking-wide text-white transition-colors hover:bg-[#15355a]"
+              >
+                Read the Original <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </article>
