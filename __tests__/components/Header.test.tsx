@@ -30,37 +30,33 @@ describe('Header component', () => {
     expect(screen.getByRole('banner')).toBeInTheDocument()
   })
 
-  it('should display the Free For Charity logo', () => {
+  it('should display the Afghanistan Affairs wordmark', () => {
     render(<Header />)
-    // Check for logo image with alt text
-    expect(screen.getByAltText('Free For Charity')).toBeInTheDocument()
+    expect(screen.getByText('AFGHANISTAN')).toBeInTheDocument()
+    expect(screen.getByText('AFFAIRS')).toBeInTheDocument()
   })
 
-  it('should display Home navigation link', () => {
+  it('should display primary navigation links', () => {
     render(<Header />)
-    // Home link should always be present in navigation
-    expect(screen.getByText('Home')).toBeInTheDocument()
+    expect(screen.getAllByText('Research').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Publications').length).toBeGreaterThan(0)
   })
 
   it('should have navigation links', () => {
     render(<Header />)
-    // Check that navigation has at least some links
     const links = screen.getAllByRole('link')
     expect(links.length).toBeGreaterThan(0)
   })
 
-  it('should have a mobile menu button', () => {
+  it('should expose a Subscribe call to action', () => {
     render(<Header />)
-    // Look for the menu icon button
-    const buttons = screen.getAllByRole('button')
-    expect(buttons.length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Subscribe').length).toBeGreaterThan(0)
   })
 
-  it('should have search functionality button', () => {
+  it('should have a mobile menu button', () => {
     render(<Header />)
     const buttons = screen.getAllByRole('button')
-    // Should have at least menu and search buttons
-    expect(buttons.length).toBeGreaterThanOrEqual(2)
+    expect(buttons.length).toBeGreaterThan(0)
   })
 
   it('should not have accessibility violations', async () => {

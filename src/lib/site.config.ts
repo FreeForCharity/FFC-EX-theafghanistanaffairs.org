@@ -59,31 +59,34 @@ export type SiteConfig = {
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'Free For Charity',
-  tagline: 'Reduce Costs, Increase Impact',
+  name: 'The Afghanistan Affairs',
+  tagline: 'Independent Research & Policy Analysis',
   description:
-    'Free For Charity connects students, professionals, and businesses with nonprofits to reduce costs and increase revenues—putting more resources back into their missions.',
+    'The Afghanistan Affairs is a non-partisan platform dedicated to research, analysis, and informed dialogue on Afghanistan and the region — covering economy, trade, governance, private sector development, and regional integration.',
   shortDescription:
-    'Connecting students, professionals, and businesses with nonprofits to reduce costs and increase revenues.',
-  url: 'https://ffcworkingsite1.org',
-  twitterHandle: '@freeforcharity',
-  contactEmail: 'security@freeforcharity.org',
+    'A non-partisan platform for research, analysis, and informed dialogue on Afghanistan and the region.',
+  url: 'https://theafghanistanaffairs.org',
+  twitterHandle: '',
+  contactEmail: 'info@theafghanistanaffairs.org',
   keywords: [
-    'nonprofit',
-    'charity',
-    'volunteer',
-    'donate',
-    'free hosting',
-    'domains',
-    'Microsoft 365',
+    'Afghanistan',
+    'policy research',
+    'political economy',
+    'governance',
+    'regional integration',
+    'private sector development',
+    'South Asia',
   ],
-  themeColor: '#ffffff',
+  themeColor: '#0e2742',
   vulnerabilityDisclosurePath: '/vulnerability-disclosure-policy',
+  // Social profiles are not yet published for The Afghanistan Affairs.
+  // Empty hrefs are filtered out in the footer, so no broken links render.
+  // Populate these as official accounts come online.
   social: [
-    { label: 'Facebook', href: 'https://www.facebook.com/freeforcharity' },
-    { label: 'X (Twitter)', href: 'https://x.com/freeforcharity1' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/freeforcharity/' },
-    { label: 'GitHub', href: 'https://github.com/FreeForCharity/FFC_Single_Page_Template' },
+    { label: 'X (Twitter)', href: '' },
+    { label: 'LinkedIn', href: '' },
+    { label: 'Facebook', href: '' },
+    { label: 'YouTube', href: '' },
   ],
 }
 
