@@ -70,6 +70,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               isRtl ? 'font-naskh' : 'font-display'
             }`}
             dir={isRtl ? 'rtl' : undefined}
+            lang={isRtl ? article.language : undefined}
           >
             {article.title}
           </h1>
@@ -92,6 +93,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               <div
                 className={`mt-8 ${isRtl ? 'space-y-6 font-naskh' : 'space-y-5'}`}
                 dir={isRtl ? 'rtl' : undefined}
+                lang={isRtl ? article.language : undefined}
               >
                 {body.map((para, i) => (
                   <p
