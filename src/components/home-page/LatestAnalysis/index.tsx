@@ -32,7 +32,14 @@ const SectionLink = ({ href }: { href: string }) => (
 const AnalysisCard = ({ a, photo }: { a: Article; photo: string }) => (
   <article className="flex flex-col overflow-hidden border border-[#e3e8ee] bg-white shadow-sm transition-shadow hover:shadow-md">
     <div className="aspect-[16/10] w-full overflow-hidden">
-      <img src={photo} alt="" aria-hidden="true" className="h-full w-full object-cover" />
+      <img
+        src={photo}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+        className="h-full w-full object-cover"
+      />
     </div>
     <div className="flex flex-1 flex-col p-5">
       <span className="text-[11px] font-[700] uppercase tracking-[0.16em] text-[#c79a3b]">

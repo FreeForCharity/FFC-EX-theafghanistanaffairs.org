@@ -30,6 +30,8 @@ const FeaturedResearch = () => {
               <img
                 src={assetPath('/Images/photos/mountains.jpg')}
                 alt="The Afghan highlands"
+                loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0e2742]/40 to-transparent" />
