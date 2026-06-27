@@ -1,24 +1,26 @@
 import type { Metadata } from 'next'
+import { siteConfig } from '@/lib/site.config'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Free For Charity',
-  description: 'Privacy Policy for Free For Charity website',
+  title: 'Privacy Policy',
+  description: `How ${siteConfig.name} collects, uses, and protects your information.`,
 }
+
+const LAST_UPDATED = 'June 27, 2026'
 
 export default function PrivacyPolicy() {
   return (
     <div className="pt-[140px] pb-[54px]">
       <div className="py-[27px] w-[90%] md:w-[80%] mx-auto">
         <div id="aria-font">
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]"></p>
           <h1 className="text-[30px] text-[#333] pb-[10px] leading-[1em] font-[500]">
             <strong>Privacy Policy</strong>
           </h1>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            <em>Effective Date: 12-07-2025</em>
+            <em>Last Updated: {LAST_UPDATED}</em>
           </p>
 
-          {/* Section 1 */}
+          {/* Section 1 — Introduction */}
           <ol className="list-decimal list-inside pb-[1em]">
             <li>
               <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
@@ -27,25 +29,33 @@ export default function PrivacyPolicy() {
             </li>
           </ol>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            At Free for Charity, accessible from https://freeforcharity.org, your privacy is one of
-            our primary concerns. This Privacy Policy document contains types of information we
-            collect and record, and how we use it. By using our website, you hereby consent to our
-            Privacy Policy and agree to its terms.
+            {siteConfig.name} ({siteConfig.url}) is an independent, non-partisan research and policy
+            archive. The site is provided and operated by Free For Charity, a 501(c)(3) nonprofit
+            that builds and hosts websites for charitable organizations. In this policy,
+            &quot;we,&quot; &quot;us,&quot; and &quot;our&quot; refer to Free For Charity acting as
+            the operator of {siteConfig.name}. This Privacy Policy explains what information we
+            collect when you visit this website, how we use it, and the choices you have. By using
+            the site, you agree to the practices described here.
           </p>
 
-          {/* Section 2 */}
+          {/* Section 2 — Scope */}
           <ol className="list-decimal list-inside pb-[1em]" start={2}>
             <li>
               <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Who We Are</strong>
+                <strong>Scope of This Policy</strong>
               </h2>
             </li>
           </ol>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            Our website address is: https://freeforcharity.org
+            {siteConfig.name} is a static, read-only publication. It does not offer user accounts,
+            logins, comments, discussion forums, file uploads, on-site payments, or e-commerce, and
+            it does not host forms that store your data on our servers. Because of this, the
+            personal information we handle is limited and is described below. This policy applies
+            only to this website; it does not cover third-party sites we link to, which have their
+            own privacy practices.
           </p>
 
-          {/* Section 3 */}
+          {/* Section 3 — Information We Collect */}
           <ol className="list-decimal list-inside pb-[1em]" start={3}>
             <li>
               <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
@@ -55,348 +65,133 @@ export default function PrivacyPolicy() {
           </ol>
 
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            <strong>3.1. Comments</strong>
+            <strong>3.1 Information you choose to send us.</strong> If you email us — for example,
+            using a contact link or requesting our newsletter — your message is composed in your own
+            email application and sent directly to us. We receive whatever you include, such as your
+            email address and the content of your message. We use this only to respond to you or to
+            add you to a mailing list at your request.
           </p>
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            When visitors leave comments on the site, we collect:
-          </p>
-          <ul className="list-disc list-inside space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Data from the comments form:</strong> This includes your name, email address,
-              website, and the comment itself.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>IP Address and Browser User Agent String:</strong> To assist with spam
-              detection and enhance security.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Gravatar Service:</strong> An anonymized string created from your email
-              address (also called a hash) may be provided to the Gravatar service to see if you are
-              using it. After approval of your comment, your profile picture (if available) is
-              visible to the public in the context of your comment. The Gravatar service privacy
-              policy is available here: Gravatar Privacy Policy
-            </li>
-          </ul>
 
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] mt-[1em]">
-            <strong>3.2. Media</strong>
-          </p>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            If you upload images to the website:
+            <strong>3.2 Information collected automatically (with your consent).</strong> Like most
+            websites, we use analytics services to understand how the site is used. When you consent
+            to analytics or marketing cookies, these services may collect standard technical
+            information such as your IP address, browser and device type, referring page, and the
+            pages you view. This information helps us improve the site. See our{' '}
+            <a href="/cookie-policy" className="text-[#007bff] underline">
+              Cookie Policy
+            </a>{' '}
+            for the specific services and cookies involved and how to control them.
           </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Embedded Location Data:</strong> Please avoid uploading images with embedded
-              location data (EXIF GPS) included. Visitors can download and extract any location data
-              from images on the website.
-            </li>
-          </ul>
 
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] mt-[1em]">
-            <strong>3.3. Cookies</strong>
-          </p>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            Our website uses cookies to enhance your browsing experience:
+            <strong>3.3 Hosting logs.</strong> The site is delivered as static files through a
+            third-party hosting provider, which may keep standard server logs (such as IP addresses
+            and requested URLs) for security and reliability. These are processed by the hosting
+            provider under its own terms.
           </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Comments Cookies:</strong> When you leave a comment, you may opt-in to saving
-              your name, email address, and website in cookies. These are for your convenience for
-              future comments and last for one year.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Login Cookies:</strong> When you log in, we set up cookies to save your login
-              information and screen display choices.
-              <ul className="list-disc list-inside ml-[1rem] mt-[4px] pb-[1em] space-y-[2px]">
-                <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-                  Login cookies last for two days.
-                </li>
-                <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-                  Screen options cookies last for one year.
-                </li>
-                <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-                  Selecting “Remember Me” extends login retention to two weeks.
-                </li>
-                <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-                  Logging out removes login cookies.
-                </li>
-              </ul>
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Temporary Cookies:</strong> Visiting our login page sets a temporary cookie to
-              determine if your browser accepts cookies. It contains no personal data and is
-              discarded when you close your browser.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Editing or Publishing Articles:</strong> This sets an additional cookie in
-              your browser, indicating the post ID of the article you just edited. It expires after
-              one day.
-            </li>
-          </ul>
 
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] mt-[1em]">
-            <strong>3.4. Microsoft Forms - Application Forms</strong>
-          </p>
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            We use Microsoft Forms (forms.office.com) for our charity application process. When you
-            submit an application through our website:
-          </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Data Collected:</strong> Information you provide in the application form
-              (name, email, organization details, etc.)
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Third-Party Processing:</strong> Microsoft Forms is a service provided by
-              Microsoft Corporation. Your form submissions are processed according to
-              Microsoft&apos;s privacy policies.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Additional Third-Party Services:</strong> Microsoft Forms may use additional
-              services (including HubSpot) for form analytics and feedback collection. These are
-              controlled by Microsoft, not Free For Charity.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Privacy Policy:</strong> Review Microsoft&apos;s privacy practices at{' '}
-              <a
-                href="https://privacy.microsoft.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#007bff] underline"
-              >
-                https://privacy.microsoft.com/
-              </a>
-            </li>
-          </ul>
-
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] mt-[1em]">
-            <strong>3.5. Embedded Content from Other Websites</strong>
-          </p>
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            Articles on this site may include embedded content (e.g., videos, images, articles).
-            Embedded content from other websites behaves as if you have visited the other website
-            directly. These websites may:
-          </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              Collect data about you.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">Use cookies.</li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              Embed additional third-party tracking.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              Monitor your interaction with the embedded content, including tracking your
-              interaction if you have an account and are logged in to that website.
-            </li>
-          </ul>
-
-          {/* Section 4 */}
+          {/* Section 4 — How We Use Information */}
           <ol className="list-decimal list-inside pb-[1em]" start={4}>
             <li>
               <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>How We Use Your Information</strong>
+                <strong>How We Use Information</strong>
               </h2>
             </li>
           </ol>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            We use the collected information for various purposes:
+            We use the limited information we collect to:
           </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
+          <ul className="list-disc list-inside space-y-[4px] pb-[1em]">
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>To Operate and Maintain Our Website:</strong> Ensuring smooth functionality
-              and user experience.
+              Operate, maintain, and secure the website.
             </li>
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>To Improve Customer Service:</strong> Your information helps us respond to
-              your requests and support needs more efficiently.
+              Understand aggregate usage so we can improve the content and experience.
             </li>
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>To Personalize User Experience:</strong> Understanding how our users utilize
-              the services and resources provided.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>To Process Transactions:</strong> Information provided during transactions is
-              used strictly for order processing.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>To Send Periodic Emails:</strong> Using the email address to send information
-              and updates pertaining to your interests.
+              Respond to messages you send us and, if you ask, send you updates.
             </li>
           </ul>
+          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
+            We do not sell, rent, or trade your personal information, and we do not use it to build
+            advertising profiles beyond what any marketing cookies you consent to may do through
+            their own providers.
+          </p>
 
-          {/* Section 5 */}
+          {/* Section 5 — Third-Party Services */}
           <ol className="list-decimal list-inside pb-[1em]" start={5}>
             <li>
               <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Who We Share Your Data With</strong>
+                <strong>Third-Party Services</strong>
               </h2>
             </li>
           </ol>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            We respect your privacy and do not sell, trade, or rent your personal identification
-            information to others. However:
+            We rely on a small number of reputable third parties. Analytics and marketing tools
+            (such as Google Analytics, and where configured, Microsoft Clarity and the Meta Pixel)
+            run only after you grant the relevant cookie consent. Our hosting provider delivers the
+            site&apos;s files. The site also links to external sources and to our legacy archive;
+            those destinations operate independently. Each third party processes data under its own
+            privacy policy, and we encourage you to review them.
           </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Service Providers:</strong> We may share your information with third-party
-              service providers to help us operate our website or administer activities on our
-              behalf, such as sending out newsletters or surveys.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Spam Detection Services:</strong> Visitor comments may be checked through
-              automated spam detection services.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Legal Obligations:</strong> We may disclose your information if required to do
-              so by law or in response to valid requests by public authorities.
-            </li>
-          </ul>
 
-          {/* Section 6 */}
+          {/* Section 6 — Data Sharing */}
           <ol className="list-decimal list-inside pb-[1em]" start={6}>
+            <li>
+              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+                <strong>How We Share Information</strong>
+              </h2>
+            </li>
+          </ol>
+          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
+            We share information only with the service providers described above, to the extent
+            needed to operate the site, and when required to comply with the law or to protect the
+            rights, safety, and security of the site and its visitors.
+          </p>
+
+          {/* Section 7 — Data Retention */}
+          <ol className="list-decimal list-inside pb-[1em]" start={7}>
             <li>
               <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
                 <strong>Data Retention</strong>
               </h2>
             </li>
           </ol>
-
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            <strong>6.1. Comments</strong>
-          </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Retention Period:</strong> Comments and their metadata are retained
-              indefinitely. This allows us to recognize and approve any follow-up comments
-              automatically.
-            </li>
-          </ul>
-
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] mt-[1em]">
-            <strong>6.2. Registered Users</strong>
-          </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>User Profiles:</strong> For users that register on our website, we store the
-              personal information provided in their user profile.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>User Rights:</strong> All users can see, edit, or delete their personal
-              information at any time (except for changing their username). Website administrators
-              can also view and edit this information.
-            </li>
-          </ul>
-
-          {/* Section 7 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={7}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Your Rights Over Your Data</strong>
-              </h2>
-            </li>
-          </ol>
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            You have the following data protection rights:
-          </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Access and Portability:</strong> Request a copy of the personal data we hold
-              about you.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Correction:</strong> Request that we correct any personal information if it is
-              inaccurate or incomplete.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Erasure:</strong> Request that we erase your personal data, under certain
-              conditions.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Restrict Processing:</strong> Object to our processing of your personal data,
-              under certain conditions.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Withdraw Consent:</strong> Withdraw your consent at any time where we relied
-              on your consent to process your personal information.
-            </li>
-          </ul>
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            To exercise these rights, please contact us at 520-222-8104.
+            Messages you send us are kept only as long as needed to respond to you or to maintain a
+            mailing list you have asked to join. Analytics data is retained according to each
+            provider&apos;s default retention settings. You may ask us to delete correspondence you
+            have sent us at any time.
           </p>
 
-          {/* Section 8 */}
+          {/* Section 8 — Your Rights */}
           <ol className="list-decimal list-inside pb-[1em]" start={8}>
             <li>
               <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Security Measures</strong>
+                <strong>Your Rights and Choices</strong>
               </h2>
             </li>
           </ol>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            We implement a variety of security measures to maintain the safety of your personal
-            information:
+            Depending on where you live, you may have rights to access, correct, or delete personal
+            information we hold about you, or to object to or restrict certain processing. You can
+            also:
           </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
+          <ul className="list-disc list-inside space-y-[4px] pb-[1em]">
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Secure Socket Layer (SSL) Technology:</strong> To encrypt sensitive
-              information transmitted online.
+              Change or withdraw your cookie consent at any time through the cookie banner.
             </li>
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Access Controls:</strong> Limited access to your personal data to those
-              employees, agents, contractors, and other third parties who have a business need to
-              know.
+              Use your browser settings to block or delete cookies.
             </li>
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Regular Security Audits:</strong> To identify and address potential
-              vulnerabilities.
+              Contact us using the details below to exercise any of your rights.
             </li>
           </ul>
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] italic">
-            However, please note that no method of transmission over the Internet or method of
-            electronic storage is 100% secure.
-          </p>
 
-          {/* Section 9 */}
+          {/* Section 9 — International Transfers */}
           <ol className="list-decimal list-inside pb-[1em]" start={9}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Third-Party Links</strong>
-              </h2>
-            </li>
-          </ol>
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            Our website may contain links to external sites that are not operated by us. We have no
-            control over and assume no responsibility for the content, privacy policies, or
-            practices of any third-party sites or services. We encourage you to review the Privacy
-            Policy of every site you visit.
-          </p>
-
-          {/* Section 10 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={10}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Children’s Privacy</strong>
-              </h2>
-            </li>
-          </ol>
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            Protecting the privacy of young children is especially important:
-          </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Age Restrictions:</strong> Our services are not intended for individuals under
-              the age of 13.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Parental Consent:</strong> We do not knowingly collect personal information
-              from children under 13 without parental consent. If you believe we might have any
-              information from or about a child under 13, please contact us immediately.
-            </li>
-          </ul>
-
-          {/* Section 11 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={11}>
             <li>
               <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
                 <strong>International Data Transfers</strong>
@@ -404,45 +199,54 @@ export default function PrivacyPolicy() {
             </li>
           </ol>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            Your information may be transferred to—and maintained on—computers located outside of
-            your state, province, country, or other governmental jurisdiction where data protection
-            laws may differ:
+            We and our service providers operate internationally, so information may be processed in
+            countries other than your own, including the United States. Where this happens, we rely
+            on the safeguards offered by those providers.
           </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Consent to Transfer:</strong> Your consent to this Privacy Policy followed by
-              your submission of such information represents your agreement to that transfer.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Compliance with Laws:</strong> We will take all steps reasonably necessary to
-              ensure that your data is treated securely and in accordance with this Privacy Policy.
-            </li>
-          </ul>
 
-          {/* Section 12 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={12}>
+          {/* Section 10 — Children's Privacy */}
+          <ol className="list-decimal list-inside pb-[1em]" start={10}>
             <li>
               <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Changes to This Privacy Policy</strong>
+                <strong>Children&apos;s Privacy</strong>
               </h2>
             </li>
           </ol>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            We may update our Privacy Policy from time to time:
+            This site publishes research and policy analysis for a general and professional
+            audience. It is not directed to children under 13, and we do not knowingly collect
+            personal information from them. If you believe a child has provided us information,
+            please contact us and we will delete it.
           </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Notification of Changes:</strong> Any changes will be posted on this page with
-              an updated effective date.
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Review Periodically:</strong> We encourage users to frequently check this page
-              for any changes to stay informed about how we are helping to protect the personal
-              information we collect.
-            </li>
-          </ul>
 
-          {/* Section 13 */}
+          {/* Section 11 — Security */}
+          <ol className="list-decimal list-inside pb-[1em]" start={11}>
+            <li>
+              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+                <strong>Security</strong>
+              </h2>
+            </li>
+          </ol>
+          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
+            The site is served over HTTPS and uses modern security headers. While we take reasonable
+            measures to protect information, no method of transmission or storage over the internet
+            is completely secure.
+          </p>
+
+          {/* Section 12 — Changes */}
+          <ol className="list-decimal list-inside pb-[1em]" start={12}>
+            <li>
+              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+                <strong>Changes to This Policy</strong>
+              </h2>
+            </li>
+          </ol>
+          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
+            We may update this Privacy Policy from time to time. Any changes will be posted on this
+            page with a revised &quot;Last Updated&quot; date.
+          </p>
+
+          {/* Section 13 — Contact */}
           <ol className="list-decimal list-inside pb-[1em]" start={13}>
             <li>
               <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
@@ -451,48 +255,29 @@ export default function PrivacyPolicy() {
             </li>
           </ol>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            If you have any questions about this Privacy Policy, please contact us:
+            For questions about this policy or your information, contact the site operator, Free For
+            Charity:
           </p>
           <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Email:</strong>{' '}
-              <a href="mailto:clarkemoyer@freeforcharity.org" className="text-[#007bff] underline">
-                clarkemoyer@freeforcharity.org
-              </a>{' '}
-              520-222-8104
+              <strong>Editorial / general:</strong>{' '}
+              <a href={`mailto:${siteConfig.contactEmail}`} className="text-[#007bff] underline">
+                {siteConfig.contactEmail}
+              </a>
             </li>
-          </ul>
-
-          {/* Section 14 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={14}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Additional Information</strong>
-              </h2>
-            </li>
-          </ol>
-
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            <strong>14.1. Data Protection Officer</strong>
-          </p>
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            We have appointed a Data Protection Officer (DPO) responsible for overseeing questions
-            in relation to this Privacy Policy:
-          </p>
-          <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Contact DPO:</strong> Clarke Moyer{' '}
-              <a href="mailto:clarkemoyer@freeforcharity.org" className="text-[#007bff] underline">
-                clarkemoyer@freeforcharity.org
-              </a>{' '}
-              520-222-8104
+              <strong>Privacy / data requests:</strong>{' '}
+              <a href="mailto:privacy@freeforcharity.org" className="text-[#007bff] underline">
+                privacy@freeforcharity.org
+              </a>
+            </li>
+            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
+              <strong>Phone:</strong>{' '}
+              <a href="tel:520-222-8104" className="text-[#007bff] underline">
+                520-222-8104
+              </a>
             </li>
           </ul>
-
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[700] mt-[1.5em]">
-            Your trust matters to us, and we are committed to protecting your personal information
-            and using it responsibly.
-          </p>
         </div>
       </div>
     </div>

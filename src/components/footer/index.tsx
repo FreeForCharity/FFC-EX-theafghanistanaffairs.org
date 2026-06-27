@@ -25,17 +25,18 @@ const columns: { heading: string; links: { name: string; href: string; external?
       heading: 'Quick Links',
       links: [
         { name: 'Research Areas', href: '/#research-areas' },
-        { name: 'Publications', href: '/#featured-research' },
+        { name: 'Publications', href: '/articles' },
         { name: 'Analysis', href: '/#latest-analysis' },
-        { name: 'Events', href: '/#events' },
+        { name: 'About', href: '/about' },
         { name: 'Subscribe', href: '/#newsletter' },
       ],
     },
     {
       heading: 'About Us',
       links: [
-        { name: 'Our Mission', href: '/#hero' },
-        { name: 'Commentary', href: '/#latest-analysis' },
+        { name: 'Our Mission', href: '/about' },
+        { name: 'The Author', href: '/about' },
+        { name: 'Trust & Provenance', href: '/about' },
         {
           name: 'Legacy Archive',
           href: 'https://theafghanistanaffairs.blogspot.com',
@@ -47,7 +48,7 @@ const columns: { heading: string; links: { name: string; href: string; external?
       heading: 'Resource Library',
       links: [
         { name: 'Featured Report', href: `/articles/${featuredArticle.slug}` },
-        { name: 'Policy Briefs', href: '/#latest-analysis' },
+        { name: 'All Publications', href: '/articles' },
         { name: 'Privacy Policy', href: '/privacy-policy' },
         { name: 'Terms of Service', href: '/terms-of-service' },
       ],

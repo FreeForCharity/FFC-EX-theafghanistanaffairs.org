@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import { ArrowRight, CalendarDays, Users, TrendingDown, Globe2 } from 'lucide-react'
+import { ArrowRight, Users, TrendingDown, LineChart, Landmark } from 'lucide-react'
 import { articlesByType, formatArticleDate } from '@/data/articles'
+import { archiveByYear } from '@/data/article-meta'
 
 function initials(name: string): string {
   return name
@@ -26,41 +27,43 @@ const ColHeading = ({ children, href }: { children: React.ReactNode; href?: stri
   </div>
 )
 
-// Macro figures cited in the platform's own 2026 economic review
-// (World Bank Afghanistan Development Update). Kept honest and sourced rather
-// than fabricated.
+// Figures cited in the platform's 2026 review of the World Bank's Afghanistan
+// Development Update — real and sourced, not placeholders.
 const glance = [
-  { icon: Users, value: '~41M', label: 'Population (est.)' },
-  { icon: TrendingDown, value: '-5.6%', label: 'GDP per capita' },
-  { icon: Globe2, value: '4.8%', label: 'GDP growth' },
+  { icon: Users, value: '47.4M', label: 'Population (end 2025)' },
+  { icon: LineChart, value: '4.8%', label: 'Real GDP growth (FY2025)' },
+  { icon: TrendingDown, value: '-5.6%', label: 'GDP per capita change' },
+  { icon: Landmark, value: '~20%', label: 'Tax revenue / GDP' },
 ]
 
-const EventsInsights = () => {
+const InsightsSection = () => {
   const commentary = articlesByType('commentary', 3)
+  const years = archiveByYear()
 
   return (
-    <section id="events" className="border-t border-[#e3e8ee] bg-[#f7f9fb] py-16 lg:py-20">
+    <section id="insights" className="border-t border-[#e3e8ee] bg-[#f7f9fb] py-16 lg:py-20">
       <div className="mx-auto max-w-[1248px] px-4">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
-          {/* Upcoming Events */}
+          {/* From the Archive */}
           <div>
-            <ColHeading>Upcoming Events</ColHeading>
-            <div className="flex flex-col items-start gap-3 border border-dashed border-[#cdd6e0] bg-white p-6">
-              <CalendarDays className="h-7 w-7 text-[#c79a3b]" />
-              <p className="font-display text-[16px] font-[600] text-[#0e2742]">
-                No upcoming events scheduled
-              </p>
-              <p className="text-[13px] leading-relaxed text-[#5b6b7f]">
-                Briefings, panels, and roundtables will be announced here. Subscribe to be notified
-                first.
-              </p>
-              <Link
-                href="/#newsletter"
-                className="mt-1 inline-flex items-center gap-1 text-[12px] font-[700] uppercase tracking-wide text-[#c79a3b] hover:text-[#0e2742]"
-              >
-                Get Notified <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
+            <ColHeading href="/articles">From the Archive</ColHeading>
+            <ul className="divide-y divide-[#e3e8ee] border-y border-[#e3e8ee]">
+              {years.map((y) => (
+                <li key={y.year}>
+                  <Link
+                    href="/articles"
+                    className="flex items-center justify-between py-3 transition-colors hover:bg-white"
+                  >
+                    <span className="font-display text-[16px] font-[600] text-[#0e2742]">
+                      {y.year}
+                    </span>
+                    <span className="text-[12px] text-[#5b6b7f]">
+                      {y.count} {y.count === 1 ? 'piece' : 'pieces'}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Afghanistan at a Glance */}
@@ -68,26 +71,28 @@ const EventsInsights = () => {
             <ColHeading>Data &amp; Insights</ColHeading>
             <div className="bg-[#0e2742] p-6 text-white">
               <p className="font-display text-[18px] font-[600]">Afghanistan at a Glance</p>
-              <div className="mt-6 space-y-5">
+              <div className="mt-6 grid grid-cols-2 gap-5">
                 {glance.map(({ icon: Icon, value, label }) => (
-                  <div key={label} className="flex items-center gap-4">
-                    <Icon className="h-6 w-6 text-[#c79a3b]" strokeWidth={1.5} />
-                    <div>
-                      <p className="font-display text-[22px] font-[700] leading-none">{value}</p>
-                      <p className="mt-1 text-[12px] text-white/70">{label}</p>
-                    </div>
+                  <div key={label}>
+                    <Icon className="h-5 w-5 text-[#c79a3b]" strokeWidth={1.5} />
+                    <p className="mt-2 font-display text-[22px] font-[700] leading-none">{value}</p>
+                    <p className="mt-1 text-[12px] text-white/70">{label}</p>
                   </div>
                 ))}
               </div>
-              <p className="mt-6 border-t border-white/15 pt-4 text-[11px] text-white/55">
-                Indicative figures drawn from the World Bank Afghanistan Development Update review.
-              </p>
+              <Link
+                href="/articles/review-of-the-latest-world-bank-afghanistan-development-update"
+                className="mt-6 inline-flex items-center gap-1 border-t border-white/15 pt-4 text-[12px] text-white/70 hover:text-[#c79a3b]"
+              >
+                Source: World Bank Afghanistan Development Update review{' '}
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
             </div>
           </div>
 
-          {/* Expert Commentary */}
+          {/* Commentary */}
           <div>
-            <ColHeading href="/#latest-analysis">Commentary</ColHeading>
+            <ColHeading href="/articles">Commentary</ColHeading>
             <ul className="space-y-5">
               {commentary.map((a) => (
                 <li key={a.slug} className="flex items-start gap-3">
@@ -114,4 +119,4 @@ const EventsInsights = () => {
   )
 }
 
-export default EventsInsights
+export default InsightsSection

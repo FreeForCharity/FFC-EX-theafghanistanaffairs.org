@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
+import { siteConfig } from '@/lib/site.config'
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy | Free For Charity',
-  description: 'Cookie Policy for Free For Charity website',
+  title: 'Cookie Policy',
+  description: `How ${siteConfig.name} uses cookies and similar technologies, and how you can control them.`,
 }
 
 // Update this date when the policy changes
-const LAST_UPDATED = 'December 7, 2025'
+const LAST_UPDATED = 'June 27, 2026'
 
 export default function CookiePolicy() {
   return (
@@ -18,6 +19,11 @@ export default function CookiePolicy() {
           </h1>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             <em>Last Updated: {LAST_UPDATED}</em>
+          </p>
+
+          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
+            This Cookie Policy explains how {siteConfig.name}, operated by Free For Charity, uses
+            cookies and similar technologies on this website, and how you can control them.
           </p>
 
           {/* Section 1 */}
@@ -55,10 +61,10 @@ export default function CookiePolicy() {
               Understand how you use our website (with your consent)
             </li>
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              Analyze website traffic and user behavior (with your consent)
+              Analyze website traffic and reading patterns (with your consent)
             </li>
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              Improve our website and user experience
+              Improve our content and user experience
             </li>
           </ul>
 
@@ -99,118 +105,14 @@ export default function CookiePolicy() {
             </table>
           </div>
 
-          {/* 3.2 Functional Cookies */}
+          {/* 3.2 Analytics Cookies */}
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] mt-[1em]">
-            <strong>3.2 Functional Cookies (Always Active)</strong>
-          </p>
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            These cookies enable essential functionality such as donation processing and application
-            forms. They are necessary for these services to work and cannot be disabled if you wish
-            to use these features.
-          </p>
-
-          {/* Microsoft Forms */}
-          <div className="bg-gray-50 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-[#333]">Microsoft Forms</h4>
-            <p className="text-sm mb-2 text-[#666]">
-              Used for our charity application form. Microsoft Forms may load additional third-party
-              services (including HubSpot) for form analytics and feedback collection. These
-              services are controlled by Microsoft.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left py-2 pr-4 text-[#333]">Service</th>
-                    <th className="text-left py-2 pr-4 text-[#333]">Purpose</th>
-                    <th className="text-left py-2 text-[#333]">Load Trigger</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b">
-                    <td className="py-2 pr-4 font-mono text-[#666]">Microsoft Forms</td>
-                    <td className="py-2 pr-4 text-[#666]">Charity application form processing</td>
-                    <td className="py-2 text-[#666]">When application modal opened</td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 pr-4 font-mono text-[#666]">
-                      HubSpot (via Microsoft Forms)
-                    </td>
-                    <td className="py-2 pr-4 text-[#666]">Form analytics and feedback</td>
-                    <td className="py-2 text-[#666]">Loaded by Microsoft Forms</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p className="text-xs mt-2 text-gray-600">
-              Privacy Policy:{' '}
-              <a
-                href="https://privacy.microsoft.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
-              >
-                https://privacy.microsoft.com/
-              </a>
-            </p>
-            <p className="text-xs mt-1 text-gray-600">
-              HubSpot Privacy:{' '}
-              <a
-                href="https://legal.hubspot.com/privacy-policy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
-              >
-                https://legal.hubspot.com/privacy-policy
-              </a>
-            </p>
-          </div>
-
-          {/* Zeffy */}
-          <div className="bg-gray-50 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-[#333]">Zeffy Donation Platform</h4>
-            <p className="text-sm mb-2 text-[#666]">
-              Zero-fee donation processing platform embedded on our website to accept donations.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b">
-                    <th className="text-left py-2 pr-4 text-[#333]">Service</th>
-                    <th className="text-left py-2 pr-4 text-[#333]">Purpose</th>
-                    <th className="text-left py-2 text-[#333]">Load Trigger</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="py-2 pr-4 font-mono text-[#666]">Zeffy</td>
-                    <td className="py-2 pr-4 text-[#666]">Donation form and payment processing</td>
-                    <td className="py-2 text-[#666]">Embedded on donation section</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p className="text-xs mt-2 text-gray-600">
-              Privacy Policy:{' '}
-              <a
-                href="https://support.zeffy.com/legal-data-privacy-security"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
-              >
-                https://support.zeffy.com/legal-data-privacy-security
-              </a>
-            </p>
-          </div>
-
-          {/* 3.3 Analytics Cookies */}
-          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] mt-[1em]">
-            <strong>3.3 Analytics Cookies (Requires Consent)</strong>
+            <strong>3.2 Analytics Cookies (Requires Consent)</strong>
           </p>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             These cookies help us understand how visitors interact with our website by collecting
-            and reporting information anonymously. We use this information to improve our website
-            and user experience.
+            and reporting information. We use this information to improve our content and the
+            reading experience. They are only set after you grant consent.
           </p>
 
           {/* Google Analytics */}
@@ -218,8 +120,8 @@ export default function CookiePolicy() {
             <h4 className="font-semibold mb-2 text-[#333]">Google Analytics</h4>
             <p className="text-sm mb-2 text-[#666]">
               Google Analytics is a web analytics service offered by Google that tracks and reports
-              website traffic. We use Google Analytics to understand how users interact with our
-              website.
+              website traffic. We use it (via Google Tag Manager) to understand how readers find and
+              use the archive.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -264,10 +166,11 @@ export default function CookiePolicy() {
 
           {/* Microsoft Clarity */}
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-[#333]">Microsoft Clarity</h4>
+            <h4 className="font-semibold mb-2 text-[#333]">Microsoft Clarity (when enabled)</h4>
             <p className="text-sm mb-2 text-[#666]">
-              Microsoft Clarity is a user behavior analytics tool that helps us understand how users
-              interact with our website through session recordings and heatmaps.
+              Microsoft Clarity is a user-behavior analytics tool that helps us understand how
+              readers interact with pages through aggregated session insights and heatmaps. It runs
+              only when configured and after you consent to analytics cookies.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -305,22 +208,21 @@ export default function CookiePolicy() {
             </p>
           </div>
 
-          {/* 3.4 Marketing Cookies */}
+          {/* 3.3 Marketing Cookies */}
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] mt-[1em]">
-            <strong>3.4 Marketing Cookies (Requires Consent)</strong>
+            <strong>3.3 Marketing Cookies (Requires Consent)</strong>
           </p>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            These cookies are used to track visitors across websites. The intention is to display
-            ads that are relevant and engaging for users and thereby more valuable for publishers
-            and advertisers.
+            If enabled, these cookies measure the reach of our work across platforms. They are set
+            only when configured and after you consent to marketing cookies.
           </p>
 
           {/* Meta Pixel */}
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-[#333]">Meta Pixel (Facebook Pixel)</h4>
+            <h4 className="font-semibold mb-2 text-[#333]">Meta Pixel (when enabled)</h4>
             <p className="text-sm mb-2 text-[#666]">
-              The Meta Pixel is an analytics tool that helps us measure the effectiveness of
-              advertising by understanding the actions people take on our website.
+              The Meta Pixel is an analytics tool that helps measure the effectiveness of outreach
+              by understanding actions people take after seeing our content.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -388,6 +290,9 @@ export default function CookiePolicy() {
               <strong>Customize:</strong> Choose which types of cookies you want to allow
             </li>
           </ul>
+          <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
+            You can change or withdraw your choices at any time by reopening the cookie banner.
+          </p>
 
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] mt-[1em]">
             <strong>4.2 Browser Settings</strong>
@@ -407,15 +312,12 @@ export default function CookiePolicy() {
               Block all cookies from specific websites
             </li>
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              Block all cookies from being set
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
               Delete all cookies when you close your browser
             </li>
           </ul>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            Please note that if you block all cookies, you may not be able to use all features of
-            our website.
+            Please note that if you block all cookies, some features of our website may not work as
+            intended.
           </p>
 
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500] mt-[1em]">
@@ -487,7 +389,8 @@ export default function CookiePolicy() {
             </li>
           </ol>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
-            If you have questions about our use of cookies, please contact us:
+            If you have questions about our use of cookies, please contact the site operator, Free
+            For Charity:
           </p>
           <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
@@ -495,9 +398,6 @@ export default function CookiePolicy() {
               <a href="mailto:privacy@freeforcharity.org" className="text-blue-600 hover:underline">
                 privacy@freeforcharity.org
               </a>
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Emergency Contact:</strong> Clarke Moyer
             </li>
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
               <strong>Phone:</strong>{' '}
