@@ -47,7 +47,8 @@ test.describe('Insights Section', () => {
     const section = page.locator(`#${testConfig.insights.sectionId}`)
     await section.scrollIntoViewIfNeeded()
 
-    const archiveLinks = section.locator('a[href="/articles"]')
+    // Ends-with selector stays valid when NEXT_PUBLIC_BASE_PATH prefixes hrefs.
+    const archiveLinks = section.locator('a[href$="/articles"]')
     await expect(archiveLinks.first()).toBeVisible()
   })
 

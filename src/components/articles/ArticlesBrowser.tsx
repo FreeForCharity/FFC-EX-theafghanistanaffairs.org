@@ -65,6 +65,8 @@ export default function ArticlesBrowser({ readingMap }: { readingMap: Record<str
       {/* Topic filters */}
       <div className="mb-3 flex flex-wrap gap-2">
         <button
+          type="button"
+          aria-pressed={area === 'all'}
           onClick={() => setArea('all')}
           className={`${chipBase} ${area === 'all' ? chipOn : chipOff}`}
         >
@@ -73,6 +75,8 @@ export default function ArticlesBrowser({ readingMap }: { readingMap: Record<str
         {areas.map((a) => (
           <button
             key={a.area}
+            type="button"
+            aria-pressed={area === a.area}
             onClick={() => setArea(a.area)}
             className={`${chipBase} ${area === a.area ? chipOn : chipOff}`}
           >
@@ -84,6 +88,8 @@ export default function ArticlesBrowser({ readingMap }: { readingMap: Record<str
       {/* Year filters */}
       <div className="mb-8 flex flex-wrap gap-2">
         <button
+          type="button"
+          aria-pressed={year === 'all'}
           onClick={() => setYear('all')}
           className={`${chipBase} ${year === 'all' ? chipOn : chipOff}`}
         >
@@ -92,6 +98,8 @@ export default function ArticlesBrowser({ readingMap }: { readingMap: Record<str
         {years.map((y) => (
           <button
             key={y.year}
+            type="button"
+            aria-pressed={year === y.year}
             onClick={() => setYear(y.year)}
             className={`${chipBase} ${year === y.year ? chipOn : chipOff}`}
           >
@@ -104,6 +112,7 @@ export default function ArticlesBrowser({ readingMap }: { readingMap: Record<str
         {filtered.length} {filtered.length === 1 ? 'publication' : 'publications'}
         {(area !== 'all' || year !== 'all' || q) && (
           <button
+            type="button"
             onClick={() => {
               setArea('all')
               setYear('all')

@@ -36,7 +36,7 @@ const glance = [
   { icon: Landmark, value: '~20%', label: 'Tax revenue / GDP' },
 ]
 
-const EventsInsights = () => {
+const InsightsSection = () => {
   const commentary = articlesByType('commentary', 3)
   const years = archiveByYear()
 
@@ -119,4 +119,4 @@ const EventsInsights = () => {
   )
 }
 
-export default EventsInsights
+export default InsightsSection
