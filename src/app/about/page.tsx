@@ -8,7 +8,7 @@ import { totalArticles, fullTextCount, yearsSpan, languageCounts } from '@/data/
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'About The Afghanistan Affairs — its mission, its founder Moheb Jabarkhail, and how the platform sources, preserves, and presents its research.',
+    'About The Afghanistan Affairs — its mission, and how the platform sources, preserves, and presents its research on Afghanistan and the region.',
 }
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
@@ -101,8 +101,8 @@ export default function AboutPage() {
                 <p className="mt-2 text-[15px] leading-[1.8] text-[#26303d]">
                   Every article on this site is migrated <strong>verbatim</strong> from the
                   platform&rsquo;s original publication — all {totalArticles} pieces published
-                  between {yearsSpan()}, including {nonEnglish} in Pashto and Dari. Text is
-                  preserved as written by the author; nothing is summarized, rewritten, or
+                  between {yearsSpan()}, including {nonEnglish} in Pashto and Dari. The text is
+                  preserved exactly as originally published; nothing is summarized, rewritten, or
                   generated. Each article also links back to its original entry on the legacy
                   archive so any reader can verify it.
                 </p>
@@ -118,9 +118,9 @@ export default function AboutPage() {
                   Independent &amp; non-partisan
                 </h3>
                 <p className="mt-2 text-[15px] leading-[1.8] text-[#26303d]">
-                  The Afghanistan Affairs is independent and non-partisan. Analysis reflects the
-                  author&rsquo;s own research and views, drawn from primary sources and published
-                  development data such as the World Bank&rsquo;s Afghanistan Development Update.
+                  The Afghanistan Affairs is independent and non-partisan. The analysis is grounded
+                  in primary sources and published development data — such as the World Bank&rsquo;s
+                  Afghanistan Development Update — rather than advocacy.
                 </p>
               </div>
             </div>
@@ -131,20 +131,12 @@ export default function AboutPage() {
                   How this site is built
                 </h3>
                 <p className="mt-2 text-[15px] leading-[1.8] text-[#26303d]">
-                  This website was rebuilt and is maintained with{' '}
-                  <a
-                    href="https://www.anthropic.com/claude"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-[600] text-[#0e2742] underline hover:text-[#c79a3b]"
-                  >
-                    Claude
-                  </a>
-                  , an AI assistant by Anthropic, used as a careful editorial tool — to migrate the
-                  full archive accurately, preserve every article&rsquo;s wording, and present the
-                  research clearly and accessibly. Claude assists with engineering and presentation;
-                  the research and analysis are the author&rsquo;s own. Photography is public
-                  domain, credited in the repository.
+                  This website was rebuilt and is maintained using{' '}
+                  <strong>AI-assisted development</strong>, applied as a careful editorial tool — to
+                  migrate the full archive accurately, preserve every article&rsquo;s wording, and
+                  present the research clearly and accessibly. AI assists only with engineering and
+                  presentation; the research and analysis are unchanged from their original
+                  publication. Photography is public domain, credited in the repository.
                 </p>
               </div>
             </div>

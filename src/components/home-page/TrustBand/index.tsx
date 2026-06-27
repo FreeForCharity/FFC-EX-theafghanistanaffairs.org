@@ -17,7 +17,7 @@ const items = [
   {
     icon: Sparkles,
     title: 'Transparently built',
-    text: 'Engineered and maintained with Claude as an editorial tool — the research and wording remain the author’s own.',
+    text: 'Built with AI-assisted development used as an editorial tool — the research and wording are preserved exactly as published.',
   },
 ]
 
