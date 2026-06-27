@@ -162,6 +162,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   <span
                     className={`mt-2 block text-[15px] font-[600] leading-snug text-[#0e2742] group-hover:text-[#c79a3b] ${prev.language === 'en' ? 'font-display' : 'font-naskh'}`}
                     dir={prev.language === 'en' ? undefined : 'rtl'}
+                    lang={prev.language === 'en' ? undefined : prev.language}
                   >
                     {prev.title}
                   </span>
@@ -180,6 +181,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   <span
                     className={`mt-2 block text-[15px] font-[600] leading-snug text-[#0e2742] group-hover:text-[#c79a3b] ${next.language === 'en' ? 'font-display' : 'font-naskh'}`}
                     dir={next.language === 'en' ? undefined : 'rtl'}
+                    lang={next.language === 'en' ? undefined : next.language}
                   >
                     {next.title}
                   </span>
@@ -209,6 +211,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                         <span
                           className={`mt-1 block text-[15px] font-[600] leading-snug text-[#0e2742] ${r.language === 'en' ? 'font-display' : 'font-naskh'}`}
                           dir={r.language === 'en' ? undefined : 'rtl'}
+                          lang={r.language === 'en' ? undefined : r.language}
                         >
                           {r.title}
                         </span>
