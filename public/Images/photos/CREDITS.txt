@@ -1,0 +1,30 @@
+Homepage photography — The Afghanistan Affairs
+================================================
+
+All images below are in the PUBLIC DOMAIN (no attribution required for use),
+sourced from Wikimedia Commons. Provenance is recorded here as good practice.
+
+landscape.jpg
+  Source: "Landscape in Afghanistan.JPG" — Wikimedia Commons
+  License: Public domain
+  Used as: homepage hero background
+
+mountains.jpg
+  Source: "Mountains in Badakhshan Province of Afghanistan.jpg" — Wikimedia Commons
+  License: Public domain
+  Used as: Featured Research flagship card
+
+kabul-skyline.jpg
+  Source: "Skyline of Kabul City.JPG" — Wikimedia Commons
+  License: Public domain
+  Used as: Latest Analysis card
+
+bazaar-elder.jpg
+  Source: "An Afghan elder and his cat sit outside his store at the Anaba bazaar
+           in Panjshir province, Afghanistan.jpg" — Wikimedia Commons
+  License: Public domain
+  Used as: Latest Analysis card
+
+To swap in your own photography, replace these files (keep the same names) or
+update the references in src/components/home-page/Hero, FeaturedResearch, and
+LatestAnalysis.
