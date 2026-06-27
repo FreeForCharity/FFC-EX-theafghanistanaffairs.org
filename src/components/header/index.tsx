@@ -18,10 +18,9 @@ const Header: React.FC = () => {
   const menuItems: MenuItem[] = useMemo(
     () => [
       { label: 'Research', path: '/#research-areas' },
-      { label: 'Publications', path: '/#featured-research' },
+      { label: 'Publications', path: '/articles' },
       { label: 'Analysis', path: '/#latest-analysis' },
-      { label: 'Events', path: '/#events' },
-      { label: 'About', path: '/#site-footer' },
+      { label: 'About', path: '/about' },
       { label: 'Contact', path: '/#site-footer' },
     ],
     []

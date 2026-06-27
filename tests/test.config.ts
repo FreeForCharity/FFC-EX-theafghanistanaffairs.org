@@ -13,15 +13,20 @@
 
 export const testConfig = {
   /**
-   * Events Section Configuration
-   * Used in: tests/events.spec.ts
+   * Insights Section Configuration
+   * Used in: tests/insights.spec.ts
+   *
+   * The homepage "From the Archive / Data & Insights / Commentary" section
+   * (#insights) surfaces real archive data: a by-year index of every
+   * publication, sourced Afghanistan development figures, and recent
+   * commentary. There are no placeholders or empty states.
    */
-  events: {
-    sectionId: 'events',
-    heading: 'Upcoming Events',
-    footerLinkText: 'Events',
-    emptyStateText: 'No upcoming events scheduled',
-    ctaText: 'Get Notified',
+  insights: {
+    sectionId: 'insights',
+    archiveHeading: 'From the Archive',
+    dataHeading: 'Data & Insights',
+    commentaryHeading: 'Commentary',
+    glanceTitle: 'Afghanistan at a Glance',
   },
 
   /**

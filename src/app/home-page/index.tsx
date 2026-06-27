@@ -4,6 +4,7 @@ import FeaturedResearch from '@/components/home-page/FeaturedResearch'
 import ResearchAreas from '@/components/home-page/ResearchAreas'
 import LatestAnalysis from '@/components/home-page/LatestAnalysis'
 import EventsInsights from '@/components/home-page/EventsInsights'
+import TrustBand from '@/components/home-page/TrustBand'
 import NewsletterCta from '@/components/home-page/NewsletterCta'
 
 const index = () => {
@@ -14,6 +15,7 @@ const index = () => {
       <ResearchAreas />
       <LatestAnalysis />
       <EventsInsights />
+      <TrustBand />
       <NewsletterCta />
     </div>
   )

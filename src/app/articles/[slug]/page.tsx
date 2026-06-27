@@ -10,6 +10,7 @@ import {
   type ArticleLanguage,
 } from '@/data/articles'
 import { articleBodies } from '@/data/article-bodies'
+import { readingMinutes, relatedArticles, adjacentArticles } from '@/data/article-meta'
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }))
@@ -42,6 +43,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   const isRtl = article.language !== 'en'
   const body = articleBodies[article.slug]
+  const readingMin = readingMinutes(article.slug)
+  const related = relatedArticles(article.slug, 3)
+  const { prev, next } = adjacentArticles(article.slug)
 
   return (
     <article>
@@ -76,6 +80,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </h1>
           <p className="mt-5 text-[14px] text-white/70">
             By {article.author} · {formatArticleDate(article.date)}
+            {readingMin > 0 && <> · {readingMin} min read</>}
           </p>
         </div>
       </header>
@@ -139,6 +144,85 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           )}
         </div>
       </div>
+
+      {/* Prev / next + related research */}
+      <nav className="border-t border-[#e3e8ee] bg-[#f7f9fb] py-12" aria-label="More publications">
+        <div className="mx-auto max-w-[820px] px-4">
+          {(prev || next) && (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {prev ? (
+                <Link
+                  href={`/articles/${prev.slug}`}
+                  className="group border border-[#e3e8ee] bg-white p-5 transition-shadow hover:shadow-md"
+                >
+                  <span className="text-[11px] font-[700] uppercase tracking-wide text-[#c79a3b]">
+                    ← Older
+                  </span>
+                  <span
+                    className={`mt-2 block text-[15px] font-[600] leading-snug text-[#0e2742] group-hover:text-[#c79a3b] ${prev.language === 'en' ? 'font-display' : 'font-naskh'}`}
+                    dir={prev.language === 'en' ? undefined : 'rtl'}
+                  >
+                    {prev.title}
+                  </span>
+                </Link>
+              ) : (
+                <span className="hidden sm:block" />
+              )}
+              {next ? (
+                <Link
+                  href={`/articles/${next.slug}`}
+                  className="group border border-[#e3e8ee] bg-white p-5 text-right transition-shadow hover:shadow-md"
+                >
+                  <span className="text-[11px] font-[700] uppercase tracking-wide text-[#c79a3b]">
+                    Newer →
+                  </span>
+                  <span
+                    className={`mt-2 block text-[15px] font-[600] leading-snug text-[#0e2742] group-hover:text-[#c79a3b] ${next.language === 'en' ? 'font-display' : 'font-naskh'}`}
+                    dir={next.language === 'en' ? undefined : 'rtl'}
+                  >
+                    {next.title}
+                  </span>
+                </Link>
+              ) : (
+                <span className="hidden sm:block" />
+              )}
+            </div>
+          )}
+
+          {related.length > 0 && (
+            <div className="mt-12">
+              <h2 className="mb-6 text-[13px] font-[700] uppercase tracking-[0.2em] text-[#0e2742]">
+                Related research
+              </h2>
+              <ul className="divide-y divide-[#e3e8ee] border-y border-[#e3e8ee]">
+                {related.map((r) => (
+                  <li key={r.slug}>
+                    <Link
+                      href={`/articles/${r.slug}`}
+                      className="flex items-start justify-between gap-4 py-4 transition-colors hover:bg-white"
+                    >
+                      <span>
+                        <span className="block text-[11px] font-[700] uppercase tracking-wide text-[#c79a3b]">
+                          {researchAreaLabel[r.area]}
+                        </span>
+                        <span
+                          className={`mt-1 block text-[15px] font-[600] leading-snug text-[#0e2742] ${r.language === 'en' ? 'font-display' : 'font-naskh'}`}
+                          dir={r.language === 'en' ? undefined : 'rtl'}
+                        >
+                          {r.title}
+                        </span>
+                      </span>
+                      <span className="whitespace-nowrap pt-1 text-[12px] text-[#5b6b7f]">
+                        {formatArticleDate(r.date)}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </nav>
     </article>
   )
 }

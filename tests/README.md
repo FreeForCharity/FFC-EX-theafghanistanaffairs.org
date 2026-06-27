@@ -66,15 +66,13 @@ The configuration file is organized by sections. Here's what each section contro
 - `applicationForm.loadingText`: Loading message text
 - `applicationForm.closeButtonAriaLabel`: Close button accessibility label
 
-#### Events Section (events.spec.ts)
+#### Insights Section (insights.spec.ts)
 
-- `events.sectionId`: HTML ID for events section (default: 'events')
-- `events.heading`: Section heading text
-- `events.footerLinkText`: Text for footer navigation link (e.g., 'Events')
-- `events.iframeTitle`: Events iframe title
-- `events.facebookLinkText`: Facebook link text
-- `events.facebookUrl`: Your Facebook page URL
-- `events.descriptionText`: Text to find in event descriptions
+- `insights.sectionId`: HTML ID for the insights section (default: 'insights')
+- `insights.archiveHeading`: "From the Archive" column heading
+- `insights.dataHeading`: "Data & Insights" column heading
+- `insights.commentaryHeading`: "Commentary" column heading
+- `insights.glanceTitle`: Title of the development-figures card
 
 #### Social Media Links (social-links.spec.ts)
 
@@ -122,7 +120,7 @@ These tests use values from `test.config.ts`:
 
 - **`mission-video.spec.ts`** - Mission video presence and configuration
 - **`application-form.spec.ts`** - Application form modal functionality
-- **`events.spec.ts`** - Events section rendering and links
+- **`insights.spec.ts`** - Insights section (archive index, data, commentary) rendering and links
 - **`social-links.spec.ts`** - Social media link validation
 - **`copyright.spec.ts`** - Copyright notice with current year
 - **`animated-numbers.spec.ts`** - Results section number animations
@@ -220,14 +218,12 @@ export const testConfig = {
     closeButtonAriaLabel: 'Close form',
   },
 
-  events: {
-    sectionId: 'events',
-    heading: 'Community Events',
-    footerLinkText: 'Events',
-    iframeTitle: 'Event Calendar',
-    facebookLinkText: 'View all events on Facebook',
-    facebookUrl: 'https://www.facebook.com/acmecharity',
-    descriptionText: 'community',
+  insights: {
+    sectionId: 'insights',
+    archiveHeading: 'From the Archive',
+    dataHeading: 'Data & Insights',
+    commentaryHeading: 'Commentary',
+    glanceTitle: 'Afghanistan at a Glance',
   },
 
   socialLinks: {
