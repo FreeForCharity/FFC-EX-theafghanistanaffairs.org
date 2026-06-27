@@ -1,38 +1,24 @@
 import React from 'react'
 import Link from 'next/link'
-import {
-  Landmark,
-  TrendingUp,
-  ShieldCheck,
-  Globe2,
-  Scale,
-  Users,
-  GraduationCap,
-  Leaf,
-  Plane,
-  ArrowRight,
-  type LucideIcon,
-} from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import { researchAreaIcon } from '@/lib/research-area-icons'
+import { researchAreaLabel, type ResearchAreaId } from '@/data/articles'
 
-interface Area {
-  label: string
-  icon: LucideIcon
-  href: string
-}
-
-// Mirrors the nine focus areas in the design doc. Links route to the
-// publications list (/articles); per-area filtering is wired up in a
-// later phase.
-const areas: Area[] = [
-  { label: 'Governance', icon: Landmark, href: '/articles' },
-  { label: 'Economy', icon: TrendingUp, href: '/articles' },
-  { label: 'Security', icon: ShieldCheck, href: '/articles' },
-  { label: 'Regional Affairs', icon: Globe2, href: '/articles' },
-  { label: 'Human Rights', icon: Scale, href: '/articles' },
-  { label: "Women's Rights", icon: Users, href: '/articles' },
-  { label: 'Education', icon: GraduationCap, href: '/articles' },
-  { label: 'Climate & Environment', icon: Leaf, href: '/articles' },
-  { label: 'Migration & Displacement', icon: Plane, href: '/articles' },
+// The nine focus areas surfaced on the homepage (mirrors the design doc; the
+// catch-all `society-culture` area is intentionally not shown here). Labels and
+// icons are pulled from the shared maps so the row stays in sync with article
+// thumbnails. Links route to the publications list (/articles); per-area
+// filtering is wired up in a later phase.
+const areaIds: ResearchAreaId[] = [
+  'governance',
+  'economy',
+  'security',
+  'regional-affairs',
+  'human-rights',
+  'womens-rights',
+  'education',
+  'climate-environment',
+  'migration-displacement',
 ]
 
 const ResearchAreas = () => {
@@ -52,18 +38,24 @@ const ResearchAreas = () => {
         </div>
 
         <ul className="grid grid-cols-3 gap-y-8 sm:grid-cols-5 lg:grid-cols-9">
-          {areas.map(({ label, icon: Icon, href }) => (
-            <li key={label}>
-              <Link href={href} className="group flex flex-col items-center gap-3 text-center">
-                <span className="flex h-12 w-12 items-center justify-center text-[#0e2742] transition-colors group-hover:text-[#c79a3b]">
-                  <Icon className="h-7 w-7" strokeWidth={1.5} />
-                </span>
-                <span className="text-[12px] font-[600] leading-tight text-[#5b6b7f] group-hover:text-[#0e2742]">
-                  {label}
-                </span>
-              </Link>
-            </li>
-          ))}
+          {areaIds.map((id) => {
+            const Icon = researchAreaIcon[id]
+            return (
+              <li key={id}>
+                <Link
+                  href="/articles"
+                  className="group flex flex-col items-center gap-3 text-center"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center text-[#0e2742] transition-colors group-hover:text-[#c79a3b]">
+                    <Icon className="h-7 w-7" strokeWidth={1.5} />
+                  </span>
+                  <span className="text-[12px] font-[600] leading-tight text-[#5b6b7f] group-hover:text-[#0e2742]">
+                    {researchAreaLabel[id]}
+                  </span>
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>

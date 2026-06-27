@@ -16,6 +16,7 @@ import {
   montserrat,
   cinzel,
   playfairDisplay,
+  notoNaskhArabic,
 } from '@/lib/fonts'
 
 const defaultTitle = `${siteConfig.name} | ${siteConfig.tagline}`
@@ -121,6 +122,7 @@ export default function RootLayout({
           montserrat.variable,
           cinzel.variable,
           playfairDisplay.variable,
+          notoNaskhArabic.variable,
         ].join(' ')}
         suppressHydrationWarning={true}
       >

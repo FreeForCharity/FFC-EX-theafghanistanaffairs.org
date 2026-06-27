@@ -20,6 +20,7 @@ jest.mock('next/font/google', () => {
     Montserrat: echo,
     Cinzel: echo,
     Playfair_Display: echo,
+    Noto_Naskh_Arabic: echo,
   }
 })
 
@@ -32,6 +33,7 @@ import {
   faunaOne,
   montserrat,
   cinzel,
+  notoNaskhArabic,
 } from '../../src/lib/fonts'
 
 describe('fonts module exports', () => {
@@ -124,5 +126,22 @@ describe('fonts module exports', () => {
         'raleway',
       ].sort()
     )
+  })
+})
+
+describe('notoNaskhArabic (RTL / Arabic-script font)', () => {
+  // Kept separate from the latin allFonts checks above because this face
+  // intentionally loads the `arabic` subset for Pashto/Dari content.
+  it('configures the arabic subset, swap display, expected weights and CSS variable', () => {
+    const cfg = notoNaskhArabic as {
+      variable?: string
+      subsets?: string[]
+      display?: string
+      weight?: string | string[]
+    }
+    expect(cfg.variable).toBe('--font-noto-naskh')
+    expect(cfg.subsets).toEqual(['arabic'])
+    expect(cfg.display).toBe('swap')
+    expect(cfg.weight).toEqual(['400', '500', '600', '700'])
   })
 })

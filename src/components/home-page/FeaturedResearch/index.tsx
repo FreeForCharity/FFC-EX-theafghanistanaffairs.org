@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { ArrowRight, FileText } from 'lucide-react'
+import ArticleThumb from '@/components/ui/ArticleThumb'
 import {
   featuredArticle,
   articlesByType,
@@ -22,10 +23,10 @@ const FeaturedResearch = () => {
       <div className="mx-auto max-w-[1248px] px-4">
         <SectionHeading>Featured Research</SectionHeading>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12">
           {/* Flagship featured report */}
           <article className="lg:col-span-6 flex flex-col border border-[#e3e8ee] bg-white shadow-sm">
-            <div className="aspect-[16/9] w-full bg-gradient-to-br from-[#0e2742] to-[#15355a]" />
+            <ArticleThumb area={featuredArticle.area} className="aspect-[16/9] w-full" />
             <div className="flex flex-1 flex-col p-6 lg:p-8">
               <span className="mb-3 text-[12px] font-[700] uppercase tracking-[0.18em] text-[#c79a3b]">
                 {articleTypeLabel[featuredArticle.type]}
@@ -52,7 +53,7 @@ const FeaturedResearch = () => {
                 key={a.slug}
                 className="flex flex-col border border-[#e3e8ee] bg-white shadow-sm"
               >
-                <div className="aspect-[4/3] w-full bg-gradient-to-br from-[#15355a] to-[#0e2742]" />
+                <ArticleThumb area={a.area} className="aspect-[4/3] w-full" />
                 <div className="flex flex-1 flex-col p-5">
                   <span className="mb-2 text-[11px] font-[700] uppercase tracking-[0.16em] text-[#c79a3b]">
                     {articleTypeLabel[a.type]}
