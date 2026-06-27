@@ -1,8 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
 import { ArrowRight, FileText } from 'lucide-react'
-import ArticleThumb from '@/components/ui/ArticleThumb'
 import { articlesByType, articleTypeLabel, formatArticleDate, type Article } from '@/data/articles'
+import { assetPath } from '@/lib/assetPath'
+
+// Photos cycle across the analysis cards so the row stays varied.
+const ANALYSIS_PHOTOS = [
+  assetPath('/Images/photos/kabul-skyline.jpg'),
+  assetPath('/Images/photos/bazaar-elder.jpg'),
+  assetPath('/Images/photos/landscape.jpg'),
+]
 
 function initials(name: string): string {
   return name
@@ -22,14 +29,16 @@ const SectionLink = ({ href }: { href: string }) => (
   </Link>
 )
 
-const AnalysisCard = ({ a }: { a: Article }) => (
-  <article className="flex flex-col border border-[#e3e8ee] bg-white shadow-sm">
-    <ArticleThumb area={a.area} className="aspect-[16/10] w-full" />
+const AnalysisCard = ({ a, photo }: { a: Article; photo: string }) => (
+  <article className="flex flex-col overflow-hidden border border-[#e3e8ee] bg-white shadow-sm transition-shadow hover:shadow-md">
+    <div className="aspect-[16/10] w-full overflow-hidden">
+      <img src={photo} alt="" aria-hidden="true" className="h-full w-full object-cover" />
+    </div>
     <div className="flex flex-1 flex-col p-5">
-      <span className="mb-2 text-[11px] font-[700] uppercase tracking-[0.16em] text-[#c79a3b]">
+      <span className="text-[11px] font-[700] uppercase tracking-[0.16em] text-[#c79a3b]">
         {articleTypeLabel[a.type]}
       </span>
-      <h3 className="font-display text-[16px] leading-snug font-[600] text-[#0e2742]">
+      <h3 className="mt-2 font-display text-[16px] font-[600] leading-snug text-[#0e2742]">
         <Link href={`/articles/${a.slug}`} className="hover:text-[#c79a3b]">
           {a.title}
         </Link>
@@ -65,8 +74,12 @@ const LatestAnalysis = () => {
               <SectionLink href="/articles" />
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-              {analysis.map((a) => (
-                <AnalysisCard key={a.slug} a={a} />
+              {analysis.map((a, i) => (
+                <AnalysisCard
+                  key={a.slug}
+                  a={a}
+                  photo={ANALYSIS_PHOTOS[i % ANALYSIS_PHOTOS.length]}
+                />
               ))}
             </div>
           </div>
