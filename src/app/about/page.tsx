@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { ArrowRight, ShieldCheck, BookOpenText, Sparkles, Mail } from 'lucide-react'
 import { author } from '@/data/author'
 import { siteConfig } from '@/lib/site.config'
-import { totalArticles, fullTextCount, yearsSpan, languageCounts } from '@/data/article-meta'
+import { totalArticles, yearsSpan, languageCounts } from '@/data/article-meta'
+import { fullTextCount } from '@/data/article-text'
 
 export const metadata: Metadata = {
   title: 'About',

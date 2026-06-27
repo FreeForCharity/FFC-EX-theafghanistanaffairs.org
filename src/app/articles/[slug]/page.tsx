@@ -10,7 +10,8 @@ import {
   type ArticleLanguage,
 } from '@/data/articles'
 import { articleBodies } from '@/data/article-bodies'
-import { readingMinutes, relatedArticles, adjacentArticles } from '@/data/article-meta'
+import { relatedArticles, adjacentArticles } from '@/data/article-meta'
+import { readingMinutes } from '@/data/article-text'
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }))

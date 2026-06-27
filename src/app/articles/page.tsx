@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { articles } from '@/data/articles'
-import { readingMinutes, totalArticles, yearsSpan } from '@/data/article-meta'
+import { totalArticles, yearsSpan } from '@/data/article-meta'
+import { readingMinutes } from '@/data/article-text'
 import ArticlesBrowser from '@/components/articles/ArticlesBrowser'
 
 export const metadata: Metadata = {

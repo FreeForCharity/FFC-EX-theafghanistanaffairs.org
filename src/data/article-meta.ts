@@ -1,8 +1,9 @@
 /**
- * Derived metadata over the article catalogue + bodies: reading time,
- * related/adjacent articles, archive-by-year, and corpus statistics.
- * Kept separate from articles.ts so the body-dependent logic lives in one
- * place.
+ * Body-free derived metadata over the article catalogue: related/adjacent
+ * articles, archive-by-year, and corpus statistics. This module deliberately
+ * does NOT import `article-bodies`, so it is safe to use from client
+ * components without shipping article bodies to the browser. Body-dependent
+ * helpers (reading time, full-text presence) live in `article-text.ts`.
  */
 import {
   articles,
@@ -11,23 +12,6 @@ import {
   type Article,
   type ResearchAreaId,
 } from './articles'
-import { articleBodies } from './article-bodies'
-
-export function wordCount(slug: string): number {
-  const body = articleBodies[slug]
-  if (!body) return 0
-  return body.join(' ').trim().split(/\s+/).filter(Boolean).length
-}
-
-/** Estimated reading time in minutes (~200 wpm), minimum 1 for ported text. */
-export function readingMinutes(slug: string): number {
-  const wc = wordCount(slug)
-  return wc ? Math.max(1, Math.round(wc / 200)) : 0
-}
-
-export function hasFullText(slug: string): boolean {
-  return Boolean(articleBodies[slug])
-}
 
 /** Articles in the same research area (newest first), then others, excluding self. */
 export function relatedArticles(slug: string, limit = 3): Article[] {
@@ -66,10 +50,6 @@ export function areaCounts(): { area: ResearchAreaId; label: string; count: numb
 }
 
 export const totalArticles = articles.length
-
-export function fullTextCount(): number {
-  return articles.filter((a) => hasFullText(a.slug)).length
-}
 
 export function yearsSpan(): string {
   const years = articles.map(yearOf)

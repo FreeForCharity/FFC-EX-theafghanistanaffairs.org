@@ -144,6 +144,7 @@ export default function ArticlesBrowser({ readingMap }: { readingMap: Record<str
                   </div>
                   <h2
                     dir={a.language === 'en' ? undefined : 'rtl'}
+                    lang={a.language === 'en' ? undefined : a.language}
                     className={`mt-2 text-[20px] font-[600] leading-snug text-[#0e2742] lg:text-[22px] ${a.language === 'en' ? 'font-display' : 'font-naskh'}`}
                   >
                     {a.title}
