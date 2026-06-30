@@ -164,6 +164,14 @@ const Footer: React.FC = () => {
               Terms of Use
             </Link>
             <Link
+              href="https://github.com/FreeForCharity/FFC-EX-theafghanistanaffairs.org/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#c79a3b]"
+            >
+              Report an Issue
+            </Link>
+            <Link
               href="https://freeforcharity.org"
               target="_blank"
               rel="noopener noreferrer"
