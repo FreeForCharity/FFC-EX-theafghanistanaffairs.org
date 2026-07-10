@@ -83,14 +83,14 @@ const Footer: React.FC = () => {
           </p>
           <p className="mt-5 max-w-[320px] text-[13px] leading-relaxed text-white/65">
             A project of{' '}
-            <a
+            <Link
               href="https://www.sepaorganization.org/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-[600] text-[#c79a3b] transition-colors hover:text-white"
             >
               SEPA Organization
-            </a>
+            </Link>
             , a U.S. 501(c)(3) nonprofit (EIN 93-3862625).
           </p>
           {socialLinks.length > 0 && (
