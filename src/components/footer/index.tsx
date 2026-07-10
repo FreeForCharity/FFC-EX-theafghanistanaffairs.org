@@ -81,6 +81,18 @@ const Footer: React.FC = () => {
             Independent research and policy analysis supporting informed dialogue toward a peaceful,
             prosperous Afghanistan.
           </p>
+          <p className="mt-5 max-w-[320px] text-[13px] leading-relaxed text-white/65">
+            A project of{' '}
+            <Link
+              href="https://www.sepaorganization.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-[600] text-[#c79a3b] transition-colors hover:text-white"
+            >
+              SEPA Organization
+            </Link>
+            , a U.S. 501(c)(3) nonprofit (EIN 93-3862625).
+          </p>
           {socialLinks.length > 0 && (
             <div className="mt-6 flex gap-3">
               {socialLinks.map(({ href, label }) => {
