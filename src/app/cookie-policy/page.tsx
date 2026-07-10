@@ -24,13 +24,9 @@ export default function CookiePolicy() {
           </p>
 
           {/* Section 1 */}
-          <ol className="list-decimal list-inside pb-[1em]">
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>What Are Cookies?</strong>
-              </h2>
-            </li>
-          </ol>
+          <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+            <strong>1. What Are Cookies?</strong>
+          </h2>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             Cookies are small text files that are placed on your device when you visit a website.
             They are widely used to make websites work more efficiently and provide information to
@@ -40,13 +36,9 @@ export default function CookiePolicy() {
           </p>
 
           {/* Section 2 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={2}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>How We Use Cookies</strong>
-              </h2>
-            </li>
-          </ol>
+          <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+            <strong>2. How We Use Cookies</strong>
+          </h2>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             When you visit our website, we use cookies to:
           </p>
@@ -66,13 +58,9 @@ export default function CookiePolicy() {
           </ul>
 
           {/* Section 3 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={3}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Types of Cookies We Use</strong>
-              </h2>
-            </li>
-          </ol>
+          <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+            <strong>3. Types of Cookies We Use</strong>
+          </h2>
 
           {/* 3.1 Necessary Cookies */}
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
@@ -114,7 +102,7 @@ export default function CookiePolicy() {
 
           {/* Microsoft Forms */}
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-[#333]">Microsoft Forms</h4>
+            <h3 className="font-semibold mb-2 text-[#333]">Microsoft Forms</h3>
             <p className="text-sm mb-2 text-[#666]">
               Used for our application and contact forms. Microsoft Forms may load additional
               third-party services (including HubSpot) for form analytics and feedback collection.
@@ -173,7 +161,7 @@ export default function CookiePolicy() {
 
           {/* Zeffy */}
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-[#333]">Zeffy Donation Platform</h4>
+            <h3 className="font-semibold mb-2 text-[#333]">Zeffy Donation Platform</h3>
             <p className="text-sm mb-2 text-[#666]">
               Zero-fee donation processing platform embedded on our website to accept donations.
             </p>
@@ -220,7 +208,7 @@ export default function CookiePolicy() {
 
           {/* Google Analytics */}
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-[#333]">Google Analytics</h4>
+            <h3 className="font-semibold mb-2 text-[#333]">Google Analytics</h3>
             <p className="text-sm mb-2 text-[#666]">
               Google Analytics is a web analytics service offered by Google that tracks and reports
               website traffic. We use Google Analytics to understand how users interact with our
@@ -269,7 +257,7 @@ export default function CookiePolicy() {
 
           {/* Microsoft Clarity */}
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-[#333]">Microsoft Clarity</h4>
+            <h3 className="font-semibold mb-2 text-[#333]">Microsoft Clarity</h3>
             <p className="text-sm mb-2 text-[#666]">
               Microsoft Clarity is a user behavior analytics tool that helps us understand how users
               interact with our website through session recordings and heatmaps.
@@ -322,7 +310,7 @@ export default function CookiePolicy() {
 
           {/* Meta Pixel */}
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-[#333]">Meta Pixel (Facebook Pixel)</h4>
+            <h3 className="font-semibold mb-2 text-[#333]">Meta Pixel (Facebook Pixel)</h3>
             <p className="text-sm mb-2 text-[#666]">
               The Meta Pixel is an analytics tool that helps us measure the effectiveness of
               advertising by understanding the actions people take on our website.
@@ -364,13 +352,9 @@ export default function CookiePolicy() {
           </div>
 
           {/* Section 4 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={4}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>How to Manage Cookies</strong>
-              </h2>
-            </li>
-          </ol>
+          <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+            <strong>4. How to Manage Cookies</strong>
+          </h2>
 
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             You have several options for managing cookies:
@@ -455,13 +439,9 @@ export default function CookiePolicy() {
           </ul>
 
           {/* Section 5 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={5}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Do Not Track Signals</strong>
-              </h2>
-            </li>
-          </ol>
+          <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+            <strong>5. Do Not Track Signals</strong>
+          </h2>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             Some browsers have a &quot;Do Not Track&quot; feature that lets you tell websites that
             you do not want to have your online activities tracked. At this time, we do not respond
@@ -470,13 +450,9 @@ export default function CookiePolicy() {
           </p>
 
           {/* Section 6 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={6}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Updates to This Cookie Policy</strong>
-              </h2>
-            </li>
-          </ol>
+          <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+            <strong>6. Updates to This Cookie Policy</strong>
+          </h2>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             We may update this Cookie Policy from time to time to reflect changes in our practices
             or for other operational, legal, or regulatory reasons. Please review this policy
@@ -484,13 +460,9 @@ export default function CookiePolicy() {
           </p>
 
           {/* Section 7 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={7}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>Contact Us</strong>
-              </h2>
-            </li>
-          </ol>
+          <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+            <strong>7. Contact Us</strong>
+          </h2>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             If you have questions about our use of cookies, please contact us:
           </p>
@@ -507,13 +479,9 @@ export default function CookiePolicy() {
           </ul>
 
           {/* Section 8 */}
-          <ol className="list-decimal list-inside pb-[1em]" start={8}>
-            <li>
-              <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
-                <strong>More Information</strong>
-              </h2>
-            </li>
-          </ol>
+          <h2 className="text-[26px] leading-[26px] font-[700] text-[#333] mb-[10px]">
+            <strong>8. More Information</strong>
+          </h2>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             For more information about how we handle your personal data, please see our{' '}
             <a href="/privacy-policy" className="text-blue-600 hover:underline">
