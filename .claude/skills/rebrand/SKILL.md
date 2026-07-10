@@ -97,6 +97,10 @@ Charity'`, which double-brands.
 - **Article/detail pages**: give them their own `openGraph`/`twitter` metadata
   and `Article` JSON-LD (see `src/components/seo/ArticleSchema.tsx`) instead of
   inheriting the homepage card.
+- **Heading hierarchy**: the template's legal pages ship with broken headings —
+  e.g. every section as its own `<h1>`, or a page whose top heading is an `<h2>`.
+  Each page needs exactly one `<h1>` (the title) with a logical `h2`/`h3` nesting
+  and no skipped levels. Check every policy page.
 
 ### 6. Assets, footer, repo metadata
 
@@ -105,7 +109,46 @@ Charity'`, which double-brands.
 - Footer: the "Built with Free For Charity" platform credit **stays** (it's the
   allowlisted attribution). Everything else — EIN, addresses, phone, parent-org
   link — is the new org's.
-- `README.md`, `CITATION.cff`, `.github/FUNDING.yml`, repo description/topics.
+
+### 6b. Full docs & metadata cleanup — the whole repo, not just `src/`
+
+The rebrand is not done when the app is clean; a fork also inherits a pile of
+Markdown and config that still names the template's placeholder domain
+(`ffcworkingsite1.org`) and, in functional metadata, points at the wrong repo.
+Do a **repo-wide** sweep:
+
+```
+grep -rniE 'ffcworkingsite1\.org|46-?2471893|520[-. ]?222[-. ]?8104' . \
+  --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=out
+```
+
+- **Functional metadata (ships real data — must be correct):** `.github/FUNDING.yml`
+  (fix the domain and drop any `#donate` link if the site has no donate flow),
+  `CITATION.cff` (`url` + `repository-code`), `.github/ISSUE_TEMPLATE/config.yml`
+  (contact links — point at THIS repo, not the template repo), `README.md`. The
+  drift checker scans these, so a stale value fails CI.
+- **Instance-describing docs (replace the placeholder domain with the real one):**
+  `CONTRIBUTING.md`, `SECURITY.md`, `DEPLOYMENT.md`, `CLOUDFLARE_SETUP.md`,
+  `THREAT-MODEL.md`, `ISSUE_RESOLUTION.md`, `NAMING_CONVENTIONS.md`,
+  `FACEBOOK_EVENTS_SETUP.md`, and any workflow comments. Where these describe the
+  new site (deployment, production URL, threat model), also swap the org NAME,
+  not just the domain — a domain change with "Free For Charity" text left beside
+  it reads as a mismatch.
+- **Docs that describe Free For Charity the platform/org — NOT the placeholder:**
+  `SUPPORT.md` (FFC's hosting/domain/grant services, EIN, support email) and the
+  `ADOPTERS.md` Free For Charity entry describe the real FFC org. Their links go
+  to `freeforcharity.org` — do NOT swap them to the new domain (that would claim
+  the new org offers FFC's services). If a template placeholder appears there,
+  fix it to `freeforcharity.org`, not the new site.
+- **Template-authoring guides (leave the placeholder — it's the teaching example):**
+  `TEMPLATE_USAGE.md`, `TEMPLATE_SETUP_CHECKLIST.md`, `TEMPLATE_CUSTOMIZATION.md`,
+  `CONTENT_REPLACEMENT_GUIDE.md`, `.github/ISSUE_TEMPLATE/rebrand-template.md`, and
+  `scripts/check-drift.mjs` (the `PLACEHOLDER_HOST` detection constant). These
+  legitimately keep `ffcworkingsite1.org` as the "replace-me" example.
+- **Stale doc references to deleted routes/components:** if you removed the
+  donation pages (step 4), scrub their mentions from `README.md` and any guide
+  so the docs match the shipped routes.
+- Update the GitHub **repo description and topics** (web UI).
 
 ### 7. Human-decision items — ask, don't guess
 

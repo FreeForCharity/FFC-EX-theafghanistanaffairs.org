@@ -136,7 +136,7 @@ hand or use the same address for both.
      aria-labels, focus styles).
 
 8. Legal pages under src/app/ (privacy-policy, terms-of-service,
-   cookie-policy, donation-policy)
+   cookie-policy, vulnerability-disclosure-policy, security-acknowledgements)
    - REVIEW with the charity's counsel before committing. Update org name
      references.
 
@@ -313,13 +313,11 @@ The main page (`/`) is a single-page application composed of scrollable sections
 - Frequently Asked Questions
 - Team section
 
-**Legal & Policy Pages (7 Separate Routes):**
+**Legal & Policy Pages (5 Separate Routes):**
 
 - Privacy Policy (`/privacy-policy`)
 - Cookie Policy (`/cookie-policy`)
 - Terms of Service (`/terms-of-service`)
-- Donation Policy (`/donation-policy`)
-- Free For Charity Donation Policy (`/free-for-charity-donation-policy`)
 - Vulnerability Disclosure Policy (`/vulnerability-disclosure-policy`)
 - Security Acknowledgements (`/security-acknowledgements`)
 
@@ -775,8 +773,6 @@ src/
 │   ├── globals.css                            # Global styles
 │   ├── home-page/                             # Homepage sections (single-page structure)
 │   ├── cookie-policy/                         # Cookie Policy page
-│   ├── donation-policy/                       # Donation Policy page
-│   ├── free-for-charity-donation-policy/      # Free For Charity Donation Policy page
 │   ├── privacy-policy/                        # Privacy Policy page
 │   ├── security-acknowledgements/             # Security Acknowledgements page
 │   ├── terms-of-service/                      # Terms of Service page
