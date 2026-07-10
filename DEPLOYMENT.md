@@ -17,9 +17,9 @@ This document explains how the Free For Charity website is deployed to GitHub Pa
 
 ## Overview
 
-The Free For Charity website is a static Next.js application deployed to GitHub Pages. The site is accessible at:
+The Afghanistan Affairs website is a static Next.js application deployed to GitHub Pages. The site is accessible at:
 
-- **GitHub Pages URL**: https://freeforcharity.github.io/FFC_Single_Page_Template/
+- **GitHub Pages URL**: https://freeforcharity.github.io/FFC-EX-theafghanistanaffairs.org/
 - **Custom Domain**: https://theafghanistanaffairs.org
 
 ### Technology Stack

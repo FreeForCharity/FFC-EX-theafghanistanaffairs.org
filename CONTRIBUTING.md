@@ -168,10 +168,10 @@ This approach helps you:
 
 #### Step 1: Visit the Live Site
 
-Start by exploring the live Free For Charity website:
+Start by exploring the live The Afghanistan Affairs website:
 
 - **Production Site:** [https://theafghanistanaffairs.org](https://theafghanistanaffairs.org)
-- **GitHub Pages:** [https://freeforcharity.github.io/FFC_Single_Page_Template/](https://freeforcharity.github.io/FFC_Single_Page_Template/)
+- **GitHub Pages:** [https://freeforcharity.github.io/FFC-EX-theafghanistanaffairs.org/](https://freeforcharity.github.io/FFC-EX-theafghanistanaffairs.org/)
 
 #### Step 2: Comprehensive Evaluation
 
