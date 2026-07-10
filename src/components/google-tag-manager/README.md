@@ -113,7 +113,7 @@ Test coverage includes:
 
 ### GitHub Pages Deployment
 
-The site automatically deploys to GitHub Pages via `.github/workflows/nextjs.yml`. The GTM implementation works on both:
+The site automatically deploys to GitHub Pages via `.github/workflows/deploy.yml`. The GTM implementation works on both:
 
 1. **Custom domain**: https://theafghanistanaffairs.org
 2. **GitHub Pages**: https://freeforcharity.github.io/FFC-EX-theafghanistanaffairs.org/

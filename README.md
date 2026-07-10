@@ -700,7 +700,7 @@ Both platforms provide identical workflows:
    - Build command: `npm run build`
    - Build output directory: `out`
    - Environment variables: Leave `NEXT_PUBLIC_BASE_PATH` unset
-     - GitHub Pages needs `/FFC_Single_Page_Template` for subdirectory routing
+     - GitHub Pages needs `/FFC-EX-theafghanistanaffairs.org` for subdirectory routing
      - Cloudflare Pages deploys to root, no basePath needed
 
 4. **Enable Preview Deployments**
@@ -834,7 +834,7 @@ The site is configured for static export and deployed to GitHub Pages:
 **Production:**
 
 - Live at: [https://theafghanistanaffairs.org](https://theafghanistanaffairs.org)
-- GitHub Pages URL: [https://freeforcharity.github.io/FFC_Single_Page_Template/](https://freeforcharity.github.io/FFC_Single_Page_Template/)
+- GitHub Pages URL: [https://freeforcharity.github.io/FFC-EX-theafghanistanaffairs.org/](https://freeforcharity.github.io/FFC-EX-theafghanistanaffairs.org/)
 - Deployment: Automatic via GitHub Actions (`.github/workflows/deploy.yml`)
 - Trigger: Push to `main` branch
 - Build output: Static files in `./out` directory
@@ -880,7 +880,7 @@ We welcome new contributors and believe fresh perspectives are invaluable! **You
 
 Use our **Reviewer Onboarding template** to document your findings:
 
-[**Create Reviewer Onboarding Issue**](https://github.com/FreeForCharity/FFC_Single_Page_Template/issues/new?assignees=&labels=documentation%2Creview%2Conboarding&template=reviewer-onboarding.md)
+[**Create Reviewer Onboarding Issue**](https://github.com/FreeForCharity/FFC-EX-theafghanistanaffairs.org/issues/new?assignees=&labels=documentation%2Creview%2Conboarding&template=reviewer-onboarding.md)
 
 The template guides you through:
 
