@@ -12,6 +12,10 @@
  *     or public files after a child site rebrands.
  *  5. Two CSPs (public/_headers and src/app/layout.tsx meta tag) drifting
  *     out of sync on third-party origins.
+ *  6. Leftover Free For Charity brand identity (org name, freeforcharity.org
+ *     URLs, EIN, phone, @freeforcharity.org emails) in rendered pages/
+ *     components after a child site rebrands — the footer platform-credit
+ *     attribution is the one allowlisted exception.
  *
  * Run: `node scripts/check-drift.mjs` or `npm run check:drift`.
  * Always resolves paths relative to the repo root, so it works regardless
@@ -448,12 +452,81 @@ async function checkSecurityTxtSync() {
   }
 }
 
+// The template's own identity. A child site is considered "rebranded" once
+// siteConfig.name has been changed away from this default, at which point any
+// leftover FFC identity in rendered pages is a real drift bug.
+const TEMPLATE_ORG_NAME = 'Free For Charity'
+
+// Patterns that identify the Free For Charity organization specifically.
+// These are safe to hard-fail on once a site has rebranded — none of them has
+// a legitimate use in a child site's own pages (the sole exception, the footer
+// "Built with Free For Charity" platform credit, is allowlisted below).
+const FFC_IDENTITY_PATTERNS = [
+  { re: /Free For Charity|Free for Charity/, label: 'the template org name "Free For Charity"' },
+  { re: /freeforcharity\.org/i, label: 'a freeforcharity.org URL' },
+  { re: /46-?2471893/, label: "Free For Charity's EIN (46-2471893)" },
+  { re: /520[\s.-]?222[\s.-]?8104/, label: "Free For Charity's phone number (520-222-8104)" },
+  { re: /[A-Za-z0-9._%+-]+@freeforcharity\.org/i, label: 'a @freeforcharity.org email address' },
+]
+
+// The footer carries the intentional "Built with Free For Charity" platform
+// credit and its link — the one place FFC identity legitimately survives a
+// rebrand. Allow those two lines; still flag EIN/phone/emails anywhere.
+function isAllowedIdentityLine(relPath, line) {
+  const normalized = relPath.split(sep).join('/')
+  if (normalized !== 'src/components/footer/index.tsx') return false
+  return /Built with Free For Charity/.test(line) || /freeforcharity\.org/i.test(line)
+}
+
+async function checkBrandIdentity() {
+  const cfgPath = join(SRC_DIR, 'lib', 'site.config.ts')
+  let name = null
+  try {
+    const cfg = await readFile(cfgPath, 'utf8')
+    const m = cfg.match(/name:\s*['"]([^'"]+)['"]/)
+    name = m ? m[1] : null
+  } catch {
+    return // missing config handled in checkSiteConfigExists
+  }
+  // Dormant on the upstream template itself: FFC identity is correct there.
+  if (!name || name === TEMPLATE_ORG_NAME) return
+
+  const trees = [join(SRC_DIR, 'app'), join(SRC_DIR, 'components')]
+  const files = []
+  for (const tree of trees) {
+    files.push(...(await walk(tree, (n) => /\.(tsx?|jsx?)$/.test(n))))
+  }
+  for (const full of files) {
+    const rel = relative(ROOT, full)
+    let body
+    try {
+      body = await readFile(full, 'utf8')
+    } catch {
+      continue
+    }
+    const lines = body.split('\n')
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i]
+      if (isAllowedIdentityLine(rel, line)) continue
+      for (const p of FFC_IDENTITY_PATTERNS) {
+        if (p.re.test(line)) {
+          errors.push(
+            `${rel}:${i + 1} still references ${p.label} after this site rebranded to "${name}". ` +
+              `Replace it with the new organization's details.`
+          )
+        }
+      }
+    }
+  }
+}
+
 await checkSiteConfigExists()
 await checkSiteConfigUrl()
 await checkKebabCaseRoutes()
 await checkAssetPathUsage()
 await checkSecrets()
 await checkPlaceholderUrl()
+await checkBrandIdentity()
 await checkCspSync()
 await checkSecurityTxtSync()
 
