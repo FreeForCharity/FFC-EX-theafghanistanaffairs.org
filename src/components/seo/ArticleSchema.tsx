@@ -62,8 +62,9 @@ export default function ArticleSchema({ article }: { article: Article }) {
     <script
       type="application/ld+json"
       // Stable JSON output with no whitespace, matching OrganizationSchema.
-      // Escape `<` to < so a stray "</script>" in any article field can't
-      // break out of the inline script tag (JSON-LD injection defense).
+      // Replace every "<" with its JSON unicode escape sequence backslash-u-003c
+      // so a stray "</script>" in any article field can't break out of the inline
+      // <script> tag (JSON-LD injection defense; parses back to identical JSON).
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   )

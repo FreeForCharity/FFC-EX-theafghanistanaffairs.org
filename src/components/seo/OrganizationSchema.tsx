@@ -45,8 +45,10 @@ export default function OrganizationSchema() {
       type="application/ld+json"
       // Stable JSON output: stringify with no whitespace to avoid layout
       // shift and keep the payload small. dangerouslySetInnerHTML is the
-      // standard pattern for inline JSON-LD per the Next.js docs. Escape `<`
-      // to < so a stray "</script>" can never break out of the tag.
+      // standard pattern for inline JSON-LD per the Next.js docs. Replace every
+      // "<" with its JSON unicode escape sequence backslash-u-003c so a stray
+      // "</script>" can never break out of the inline <script> tag (it parses
+      // back to an identical "<" character, so the JSON is unchanged).
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   )

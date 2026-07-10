@@ -471,11 +471,15 @@ const FFC_IDENTITY_PATTERNS = [
 
 // The footer carries the intentional "Built with Free For Charity" platform
 // credit and its link — the one place FFC identity legitimately survives a
-// rebrand. Allow those two lines; still flag EIN/phone/emails anywhere.
+// rebrand. Allow ONLY those two specific lines (the credit text and the exact
+// attribution href), so any other freeforcharity.org URL — or an EIN, phone,
+// or email — is still flagged even inside the footer file.
 function isAllowedIdentityLine(relPath, line) {
   const normalized = relPath.split(sep).join('/')
   if (normalized !== 'src/components/footer/index.tsx') return false
-  return /Built with Free For Charity/.test(line) || /freeforcharity\.org/i.test(line)
+  return (
+    /Built with Free For Charity/.test(line) || /href="https:\/\/freeforcharity\.org"/i.test(line)
+  )
 }
 
 async function checkBrandIdentity() {
