@@ -1,10 +1,10 @@
 # Threat Model
 
-This document outlines the security threat model for the Free For Charity website, identifying potential security risks, trust boundaries, and mitigation strategies for our technology stack.
+This document outlines the security threat model for The Afghanistan Affairs website, identifying potential security risks, trust boundaries, and mitigation strategies for our technology stack.
 
 ## Overview
 
-The Free For Charity website is a static Next.js application deployed to GitHub Pages. As a nonprofit organization, we prioritize protecting our reputation, maintaining service availability, and ensuring the security of our community.
+The Afghanistan Affairs website is a static Next.js application deployed to GitHub Pages. As a nonprofit organization, we prioritize protecting our reputation, maintaining service availability, and ensuring the security of our community.
 
 ## System Architecture
 
