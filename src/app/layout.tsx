@@ -40,9 +40,10 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
-  alternates: {
-    canonical: '/',
-  },
+  // NOTE: no site-wide `alternates.canonical` here. In the App Router a
+  // canonical set on the root layout is inherited by every nested route, which
+  // would point all pages at the homepage. Each route declares its own
+  // canonical instead (homepage in page.tsx, articles + policy pages locally).
   openGraph: {
     type: 'website',
     url: siteUrl('/'),

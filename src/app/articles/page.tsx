@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Publications',
   description:
     'Research, analysis, policy briefs, and commentary on Afghanistan and the region from The Afghanistan Affairs.',
+  alternates: {
+    canonical: '/articles',
+  },
 }
 
 const languageLabel: Record<ArticleLanguage, string> = {
