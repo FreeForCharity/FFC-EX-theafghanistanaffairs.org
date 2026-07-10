@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy | Free For Charity',
-  description: 'Cookie Policy for Free For Charity website',
+  title: 'Cookie Policy',
+  description: 'Cookie Policy for The Afghanistan Affairs website.',
+  alternates: {
+    canonical: '/cookie-policy',
+  },
 }
 
 // Update this date when the policy changes
@@ -113,9 +116,9 @@ export default function CookiePolicy() {
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
             <h4 className="font-semibold mb-2 text-[#333]">Microsoft Forms</h4>
             <p className="text-sm mb-2 text-[#666]">
-              Used for our charity application form. Microsoft Forms may load additional third-party
-              services (including HubSpot) for form analytics and feedback collection. These
-              services are controlled by Microsoft.
+              Used for our application and contact forms. Microsoft Forms may load additional
+              third-party services (including HubSpot) for form analytics and feedback collection.
+              These services are controlled by Microsoft.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -129,8 +132,10 @@ export default function CookiePolicy() {
                 <tbody>
                   <tr className="border-b">
                     <td className="py-2 pr-4 font-mono text-[#666]">Microsoft Forms</td>
-                    <td className="py-2 pr-4 text-[#666]">Charity application form processing</td>
-                    <td className="py-2 text-[#666]">When application modal opened</td>
+                    <td className="py-2 pr-4 text-[#666]">
+                      Application and contact form processing
+                    </td>
+                    <td className="py-2 text-[#666]">When form modal opened</td>
                   </tr>
                   <tr>
                     <td className="py-2 pr-4 font-mono text-[#666]">
@@ -492,17 +497,11 @@ export default function CookiePolicy() {
           <ul className="list-inside list-disc space-y-[4px] pb-[1em]">
             <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
               <strong>Email:</strong>{' '}
-              <a href="mailto:privacy@freeforcharity.org" className="text-blue-600 hover:underline">
-                privacy@freeforcharity.org
-              </a>
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Emergency Contact:</strong> Clarke Moyer
-            </li>
-            <li className="text-[14px] text-[#666] leading-[24px] font-[500]">
-              <strong>Phone:</strong>{' '}
-              <a href="tel:520-222-8104" className="text-blue-600 hover:underline">
-                520-222-8104
+              <a
+                href="mailto:info@theafghanistanaffairs.org"
+                className="text-blue-600 hover:underline"
+              >
+                info@theafghanistanaffairs.org
               </a>
             </li>
           </ul>

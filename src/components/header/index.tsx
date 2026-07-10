@@ -65,7 +65,7 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:block">
+          <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center gap-1 text-[13px] font-[600] uppercase tracking-wide">
               {menuItems.map((item) => (
                 <li key={item.label}>
@@ -94,6 +94,7 @@ const Header: React.FC = () => {
               className="lg:hidden p-2 text-white"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? <RxCross2 className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
             </button>
@@ -105,6 +106,8 @@ const Header: React.FC = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.nav
+            id="mobile-menu"
+            aria-label="Mobile"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
