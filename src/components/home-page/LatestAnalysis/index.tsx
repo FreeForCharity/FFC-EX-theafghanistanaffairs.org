@@ -38,7 +38,7 @@ const AnalysisCard = ({ a, photo }: { a: Article; photo: string }) => (
         alt=""
         aria-hidden="true"
         fill
-        sizes="(min-width: 1024px) 30vw, 100vw"
+        sizes="(min-width: 1024px) 22vw, (min-width: 640px) 33vw, 100vw"
         className="object-cover"
       />
     </div>
