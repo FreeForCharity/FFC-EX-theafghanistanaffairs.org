@@ -97,7 +97,6 @@ export default function RootLayout({
             guidestar / idealist widgets aren't used on this site at all, so
             their old hints just wasted connections. */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         <GoogleTagManager />
       </head>

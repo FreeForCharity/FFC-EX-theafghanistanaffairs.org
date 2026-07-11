@@ -29,7 +29,7 @@ const FeaturedResearch = () => {
           <article className="flex flex-col overflow-hidden border border-[#e3e8ee] bg-white shadow-sm lg:col-span-7">
             <div className="relative aspect-[16/9] w-full overflow-hidden">
               <Image
-                src={assetPath('/Images/photos/mountains.jpg')}
+                src={assetPath('/Images/photos/mountains.webp')}
                 alt="The Afghan highlands"
                 fill
                 sizes="(min-width: 1024px) 58vw, 100vw"

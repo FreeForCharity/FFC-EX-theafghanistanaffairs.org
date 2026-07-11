@@ -1,24 +1,43 @@
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { featuredArticle } from '@/data/articles'
 import { assetPath } from '@/lib/assetPath'
 
+// Responsive WebP widths for the hero background (the LCP element). next/image
+// can't emit a WebP srcset under `unoptimized` static export, so we hand-roll a
+// <picture> plus a matching responsive preload.
+const HERO_SRCSET = [640, 1024, 1600]
+  .map((w) => `${assetPath(`/Images/photos/landscape-${w}.webp`)} ${w}w`)
+  .join(', ')
+
 const Hero = () => {
   return (
     <section id="hero" className="relative overflow-hidden bg-[#0e2742] text-white">
-      {/* Background photograph (public-domain aerial of the Afghan highlands).
-          This is the LCP element, so it's marked priority to preload it. */}
-      <Image
-        src={assetPath('/Images/photos/landscape.jpg')}
-        alt=""
-        aria-hidden="true"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
+      {/* Responsive preload for the LCP hero image. React 19 hoists this
+          <link> into <head>; imageSrcSet matches the <picture> below so the
+          browser preloads the right width for the viewport. */}
+      <link
+        rel="preload"
+        as="image"
+        type="image/webp"
+        imageSrcSet={HERO_SRCSET}
+        imageSizes="100vw"
       />
+      {/* Background photograph (public-domain aerial of the Afghan highlands). */}
+      <picture>
+        <source type="image/webp" srcSet={HERO_SRCSET} sizes="100vw" />
+        {/* Raw <img> (inside <picture>): next/image can't emit a responsive
+            WebP srcset under `unoptimized` static export. */}
+        <img
+          src={assetPath('/Images/photos/landscape-1600.webp')}
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </picture>
       {/* Navy gradient overlay so the headline stays legible over the photo */}
       <div
         className="absolute inset-0"

@@ -7,9 +7,9 @@ import { assetPath } from '@/lib/assetPath'
 
 // Photos cycle across the analysis cards so the row stays varied.
 const ANALYSIS_PHOTOS = [
-  assetPath('/Images/photos/kabul-skyline.jpg'),
-  assetPath('/Images/photos/bazaar-elder.jpg'),
-  assetPath('/Images/photos/landscape.jpg'),
+  assetPath('/Images/photos/kabul-skyline.webp'),
+  assetPath('/Images/photos/bazaar-elder.webp'),
+  assetPath('/Images/photos/landscape-1024.webp'),
 ]
 
 function initials(name: string): string {
