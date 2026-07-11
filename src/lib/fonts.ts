@@ -1,9 +1,10 @@
 import { Open_Sans, Lato, Faustina, Playfair_Display, Noto_Naskh_Arabic } from 'next/font/google'
 
 // Only the faces this site actually renders are loaded. Fonts that are not
-// used on the homepage set `preload: false` so they don't emit a render-
-// blocking <link rel="preload"> on every route — they still load on demand
-// (with `display: swap`) on the pages that use them.
+// used on the homepage set `preload: false` so they don't emit a high-priority
+// <link rel="preload"> that competes for bandwidth on every route's initial
+// navigation — they still load on demand (with `display: swap`) on the pages
+// that use them.
 
 // Serif display face for The Afghanistan Affairs headings (matches the
 // research-institute design direction). Used on the homepage → preloaded.

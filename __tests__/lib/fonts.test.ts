@@ -95,7 +95,8 @@ describe('fonts module exports', () => {
 
   it('preloads only the homepage faces (playfair + open-sans); others opt out', () => {
     // Fonts not used on the homepage set preload:false so they don't emit a
-    // render-blocking <link rel="preload"> on every route.
+    // high-priority <link rel="preload"> that competes for bandwidth on every
+    // route's initial navigation.
     expect((openSans as { preload?: boolean }).preload).not.toBe(false)
     expect((playfairDisplay as { preload?: boolean }).preload).not.toBe(false)
     expect((lato as { preload?: boolean }).preload).toBe(false)

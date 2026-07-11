@@ -90,10 +90,12 @@ export default function RootLayout({
         <meta name="color-scheme" content="light" />
         <meta name="theme-color" content={siteConfig.themeColor} />
 
-        {/* Preconnect only to origins actually loaded at runtime. GTM is the
-            single third-party script this site loads; zeffy/guidestar/idealist
-            widgets are not used here, so preconnecting to them just wastes
-            connections. */}
+        {/* Preconnect only to origins loaded on the initial page view. GTM is
+            the one third-party script that loads up front; Clarity and the Meta
+            Pixel load later, and only after cookie consent (see cookie-consent),
+            so preconnecting to them here would be premature. The zeffy /
+            guidestar / idealist widgets aren't used on this site at all, so
+            their old hints just wasted connections. */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
