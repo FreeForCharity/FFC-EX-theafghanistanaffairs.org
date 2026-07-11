@@ -21,6 +21,7 @@ const Hero = () => {
         rel="preload"
         as="image"
         type="image/webp"
+        href={assetPath('/Images/photos/landscape-1600.webp')}
         imageSrcSet={HERO_SRCSET}
         imageSizes="100vw"
       />

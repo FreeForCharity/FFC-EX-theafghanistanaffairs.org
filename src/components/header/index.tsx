@@ -102,12 +102,15 @@ const Header: React.FC = () => {
       </div>
 
       {/* Mobile menu — CSS grid-rows collapse (0fr → 1fr) animates height:auto
-          with no JS animation library. `inert` when closed keeps the collapsed
-          links out of the tab order and off screen readers. */}
+          with no JS animation library. When closed, `inert` removes it from the
+          tab order and a11y tree in supporting browsers; `aria-hidden` and a
+          `tabIndex={-1}` on each link provide the same for browsers without
+          `inert`. */}
       <nav
         id="mobile-menu"
         aria-label="Mobile"
         inert={!isMobileMenuOpen}
+        aria-hidden={!isMobileMenuOpen}
         className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-in-out lg:hidden ${
           isMobileMenuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
         }`}
@@ -119,6 +122,7 @@ const Header: React.FC = () => {
                 <Link
                   href={item.path}
                   onClick={closeMobile}
+                  tabIndex={isMobileMenuOpen ? undefined : -1}
                   className="block px-2 py-3 text-[14px] font-[600] uppercase tracking-wide text-white/90 hover:text-[#c79a3b]"
                 >
                   {item.label}
@@ -129,6 +133,7 @@ const Header: React.FC = () => {
               <Link
                 href="/#newsletter"
                 onClick={closeMobile}
+                tabIndex={isMobileMenuOpen ? undefined : -1}
                 className="mt-2 block bg-[#c79a3b] px-4 py-3 text-center text-[14px] font-[700] uppercase tracking-wide text-[#0e2742]"
               >
                 Subscribe
