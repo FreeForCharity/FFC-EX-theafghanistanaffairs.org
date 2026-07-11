@@ -6,18 +6,7 @@ import CookieConsent from './../components/cookie-consent'
 import GoogleTagManager, { GoogleTagManagerNoScript } from './../components/google-tag-manager'
 import { siteConfig, siteUrl, twitterSite, cardDescription } from '@/lib/site.config'
 import { assetPath } from '@/lib/assetPath'
-import {
-  openSans,
-  lato,
-  raleway,
-  faustina,
-  cantataOne,
-  faunaOne,
-  montserrat,
-  cinzel,
-  playfairDisplay,
-  notoNaskhArabic,
-} from '@/lib/fonts'
+import { openSans, lato, faustina, playfairDisplay, notoNaskhArabic } from '@/lib/fonts'
 
 const defaultTitle = `${siteConfig.name} | ${siteConfig.tagline}`
 
@@ -101,13 +90,12 @@ export default function RootLayout({
         <meta name="color-scheme" content="light" />
         <meta name="theme-color" content={siteConfig.themeColor} />
 
-        {/* Preconnect to external domains for faster resource loading */}
+        {/* Preconnect only to origins actually loaded at runtime. GTM is the
+            single third-party script this site loads; zeffy/guidestar/idealist
+            widgets are not used here, so preconnecting to them just wastes
+            connections. */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.zeffy.com" />
-        <link rel="preconnect" href="https://widgets.guidestar.org" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.zeffy.com" />
-        <link rel="dns-prefetch" href="https://www.idealist.org" />
 
         <GoogleTagManager />
       </head>
@@ -116,12 +104,7 @@ export default function RootLayout({
           'antialiased',
           openSans.variable,
           lato.variable,
-          raleway.variable,
           faustina.variable,
-          cantataOne.variable,
-          faunaOne.variable,
-          montserrat.variable,
-          cinzel.variable,
           playfairDisplay.variable,
           notoNaskhArabic.variable,
         ].join(' ')}

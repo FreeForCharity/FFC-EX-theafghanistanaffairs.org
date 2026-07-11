@@ -9,43 +9,25 @@ jest.mock('next/font/google', () => {
     weight: config.weight,
     subsets: config.subsets,
     display: config.display,
+    preload: config.preload,
   })
   return {
     Open_Sans: echo,
     Lato: echo,
-    Raleway: echo,
     Faustina: echo,
-    Cantata_One: echo,
-    Fauna_One: echo,
-    Montserrat: echo,
-    Cinzel: echo,
     Playfair_Display: echo,
     Noto_Naskh_Arabic: echo,
   }
 })
 
-import {
-  openSans,
-  lato,
-  raleway,
-  faustina,
-  cantataOne,
-  faunaOne,
-  montserrat,
-  cinzel,
-  notoNaskhArabic,
-} from '../../src/lib/fonts'
+import { openSans, lato, faustina, playfairDisplay, notoNaskhArabic } from '../../src/lib/fonts'
 
 describe('fonts module exports', () => {
   const allFonts = {
     openSans,
     lato,
-    raleway,
     faustina,
-    cantataOne,
-    faunaOne,
-    montserrat,
-    cinzel,
+    playfairDisplay,
   } as const
 
   it('exports a defined font object for every named Google font', () => {
@@ -64,12 +46,8 @@ describe('fonts module exports', () => {
     const expected: Record<keyof typeof allFonts, string> = {
       openSans: '--font-open-sans',
       lato: '--font-lato',
-      raleway: '--font-raleway',
       faustina: '--font-faustina',
-      cantataOne: '--font-cantata-one',
-      faunaOne: '--font-fauna-one',
-      montserrat: '--font-montserrat',
-      cinzel: '--font-cinzel',
+      playfairDisplay: '--font-playfair-display',
     }
 
     for (const [name, font] of Object.entries(allFonts)) {
@@ -96,12 +74,8 @@ describe('fonts module exports', () => {
     const expectedWeight: Record<keyof typeof allFonts, string | string[]> = {
       openSans: ['400', '500', '600', '700', '800'],
       lato: ['400', '700'],
-      raleway: ['400', '500', '600', '700'],
       faustina: ['400', '500', '600', '700'],
-      cantataOne: '400',
-      faunaOne: '400',
-      montserrat: ['400', '500', '600', '700'],
-      cinzel: ['400', '500', '600', '700'],
+      playfairDisplay: ['400', '500', '600', '700', '800'],
     }
 
     for (const [name, font] of Object.entries(allFonts)) {
@@ -113,19 +87,20 @@ describe('fonts module exports', () => {
     }
   })
 
-  it('exports exactly the eight expected font instances', () => {
+  it('exports exactly the expected font instances', () => {
     expect(Object.keys(allFonts).sort()).toEqual(
-      [
-        'cantataOne',
-        'cinzel',
-        'faunaOne',
-        'faustina',
-        'lato',
-        'montserrat',
-        'openSans',
-        'raleway',
-      ].sort()
+      ['faustina', 'lato', 'openSans', 'playfairDisplay'].sort()
     )
+  })
+
+  it('preloads only the homepage faces (playfair + open-sans); others opt out', () => {
+    // Fonts not used on the homepage set preload:false so they don't emit a
+    // render-blocking <link rel="preload"> on every route.
+    expect((openSans as { preload?: boolean }).preload).not.toBe(false)
+    expect((playfairDisplay as { preload?: boolean }).preload).not.toBe(false)
+    expect((lato as { preload?: boolean }).preload).toBe(false)
+    expect((faustina as { preload?: boolean }).preload).toBe(false)
+    expect((notoNaskhArabic as { preload?: boolean }).preload).toBe(false)
   })
 })
 
