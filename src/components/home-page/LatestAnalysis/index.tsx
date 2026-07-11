@@ -1,14 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, FileText } from 'lucide-react'
 import { articlesByType, articleTypeLabel, formatArticleDate, type Article } from '@/data/articles'
 import { assetPath } from '@/lib/assetPath'
 
 // Photos cycle across the analysis cards so the row stays varied.
 const ANALYSIS_PHOTOS = [
-  assetPath('/Images/photos/kabul-skyline.jpg'),
-  assetPath('/Images/photos/bazaar-elder.jpg'),
-  assetPath('/Images/photos/landscape.jpg'),
+  assetPath('/Images/photos/kabul-skyline.webp'),
+  assetPath('/Images/photos/bazaar-elder.webp'),
+  assetPath('/Images/photos/landscape-1024.webp'),
 ]
 
 function initials(name: string): string {
@@ -31,14 +32,14 @@ const SectionLink = ({ href }: { href: string }) => (
 
 const AnalysisCard = ({ a, photo }: { a: Article; photo: string }) => (
   <article className="flex flex-col overflow-hidden border border-[#e3e8ee] bg-white shadow-sm transition-shadow hover:shadow-md">
-    <div className="aspect-[16/10] w-full overflow-hidden">
-      <img
+    <div className="relative aspect-[16/10] w-full overflow-hidden">
+      <Image
         src={photo}
         alt=""
         aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        className="h-full w-full object-cover"
+        fill
+        sizes="(min-width: 1024px) 22vw, (min-width: 640px) 33vw, 100vw"
+        className="object-cover"
       />
     </div>
     <div className="flex flex-1 flex-col p-5">
