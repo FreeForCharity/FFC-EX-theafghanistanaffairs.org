@@ -4,7 +4,6 @@ import React, { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import { FiMenu } from 'react-icons/fi'
 import { RxCross2 } from 'react-icons/rx'
-import { motion, AnimatePresence } from 'framer-motion'
 
 interface MenuItem {
   label: string
@@ -102,43 +101,42 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.nav
-            id="mobile-menu"
-            aria-label="Mobile"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="lg:hidden overflow-hidden border-t border-white/10 bg-[#0a1f38]"
-          >
-            <ul className="px-4 py-3">
-              {menuItems.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.path}
-                    onClick={closeMobile}
-                    className="block px-2 py-3 text-[14px] font-[600] uppercase tracking-wide text-white/90 hover:text-[#c79a3b]"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
+      {/* Mobile menu — CSS grid-rows collapse (0fr → 1fr) animates height:auto
+          with no JS animation library. `inert` when closed keeps the collapsed
+          links out of the tab order and off screen readers. */}
+      <nav
+        id="mobile-menu"
+        aria-label="Mobile"
+        inert={!isMobileMenuOpen}
+        className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-in-out lg:hidden ${
+          isMobileMenuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden border-t border-white/10 bg-[#0a1f38]">
+          <ul className="px-4 py-3">
+            {menuItems.map((item) => (
+              <li key={item.label}>
                 <Link
-                  href="/#newsletter"
+                  href={item.path}
                   onClick={closeMobile}
-                  className="mt-2 block bg-[#c79a3b] px-4 py-3 text-center text-[14px] font-[700] uppercase tracking-wide text-[#0e2742]"
+                  className="block px-2 py-3 text-[14px] font-[600] uppercase tracking-wide text-white/90 hover:text-[#c79a3b]"
                 >
-                  Subscribe
+                  {item.label}
                 </Link>
               </li>
-            </ul>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+            ))}
+            <li>
+              <Link
+                href="/#newsletter"
+                onClick={closeMobile}
+                className="mt-2 block bg-[#c79a3b] px-4 py-3 text-center text-[14px] font-[700] uppercase tracking-wide text-[#0e2742]"
+              >
+                Subscribe
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
   )
 }
