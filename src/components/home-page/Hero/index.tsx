@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { featuredArticle } from '@/data/articles'
 import { assetPath } from '@/lib/assetPath'
@@ -7,12 +8,16 @@ import { assetPath } from '@/lib/assetPath'
 const Hero = () => {
   return (
     <section id="hero" className="relative overflow-hidden bg-[#0e2742] text-white">
-      {/* Background photograph (public-domain aerial of the Afghan highlands) */}
-      <img
+      {/* Background photograph (public-domain aerial of the Afghan highlands).
+          This is the LCP element, so it's marked priority to preload it. */}
+      <Image
         src={assetPath('/Images/photos/landscape.jpg')}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
       />
       {/* Navy gradient overlay so the headline stays legible over the photo */}
       <div

@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, FileText } from 'lucide-react'
 import {
   featuredArticle,
@@ -27,12 +28,12 @@ const FeaturedResearch = () => {
           {/* Flagship featured report — photo header + editorial copy. */}
           <article className="flex flex-col overflow-hidden border border-[#e3e8ee] bg-white shadow-sm lg:col-span-7">
             <div className="relative aspect-[16/9] w-full overflow-hidden">
-              <img
+              <Image
                 src={assetPath('/Images/photos/mountains.jpg')}
                 alt="The Afghan highlands"
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover"
+                fill
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0e2742]/40 to-transparent" />
               <span className="absolute left-5 top-5 inline-flex items-center bg-[#c79a3b] px-3 py-1.5 text-[11px] font-[700] uppercase tracking-[0.16em] text-[#0e2742]">

@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, FileText } from 'lucide-react'
 import { articlesByType, articleTypeLabel, formatArticleDate, type Article } from '@/data/articles'
 import { assetPath } from '@/lib/assetPath'
@@ -31,14 +32,14 @@ const SectionLink = ({ href }: { href: string }) => (
 
 const AnalysisCard = ({ a, photo }: { a: Article; photo: string }) => (
   <article className="flex flex-col overflow-hidden border border-[#e3e8ee] bg-white shadow-sm transition-shadow hover:shadow-md">
-    <div className="aspect-[16/10] w-full overflow-hidden">
-      <img
+    <div className="relative aspect-[16/10] w-full overflow-hidden">
+      <Image
         src={photo}
         alt=""
         aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        className="h-full w-full object-cover"
+        fill
+        sizes="(min-width: 1024px) 30vw, 100vw"
+        className="object-cover"
       />
     </div>
     <div className="flex flex-1 flex-col p-5">
