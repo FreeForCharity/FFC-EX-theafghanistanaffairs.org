@@ -168,7 +168,7 @@ const Footer: React.FC = () => {
           <p>
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-5 sm:justify-end">
             <Link href="/privacy-policy" className="hover:text-[#c79a3b]">
               Privacy Policy
             </Link>
@@ -183,13 +183,26 @@ const Footer: React.FC = () => {
             >
               Report an Issue
             </Link>
+            {/* FFC footer standard: every supported charity site links back to
+                the supporting org's hub. Always rendered — keep this entry
+                when customizing. */}
+            <Link
+              href="https://freeforcharity.org/hub/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#c79a3b]"
+            >
+              Supported Charity Login
+            </Link>
+            {/* FFC footer standard: the permanent "Supported by" attribution.
+                Always rendered — do NOT remove or hide it when customizing. */}
             <Link
               href="https://freeforcharity.org"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[#c79a3b]"
             >
-              Built with Free For Charity
+              Supported by Free For Charity
             </Link>
           </div>
         </div>

@@ -45,7 +45,11 @@ export const testConfig = {
     text: 'The Afghanistan Affairs. All rights reserved.',
     searchText: 'All rights reserved',
     linkUrl: 'https://freeforcharity.org',
-    linkText: 'Built with Free For Charity',
+    linkText: 'Supported by Free For Charity',
+    // The "Supported Charity Login" hub link (FFC footer standard) — always
+    // rendered in the footer bottom bar alongside the attribution.
+    hubUrl: 'https://freeforcharity.org/hub/',
+    hubText: 'Supported Charity Login',
   },
 
   /**
