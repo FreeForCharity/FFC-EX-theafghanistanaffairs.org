@@ -470,7 +470,8 @@ const TEMPLATE_ORG_NAME = 'Free For Charity'
 // Patterns that identify the Free For Charity organization specifically.
 // These are safe to hard-fail on once a site has rebranded — none of them has
 // a legitimate use in a child site's own pages (the sole exception, the footer
-// "Built with Free For Charity" platform credit, is allowlisted below).
+// "Supported by Free For Charity" attribution and the "Supported Charity
+// Login" hub link — the FFC footer standard — is allowlisted below).
 const FFC_IDENTITY_PATTERNS = [
   { re: /Free For Charity|Free for Charity/, label: 'the template org name "Free For Charity"' },
   { re: /freeforcharity\.org/i, label: 'a freeforcharity.org URL' },
@@ -479,16 +480,20 @@ const FFC_IDENTITY_PATTERNS = [
   { re: /[A-Za-z0-9._%+-]+@freeforcharity\.org/i, label: 'a @freeforcharity.org email address' },
 ]
 
-// The footer carries the intentional "Built with Free For Charity" platform
-// credit and its link — the one place FFC identity legitimately survives a
-// rebrand. Allow ONLY those two specific lines (the credit text and the exact
-// attribution href), so any other freeforcharity.org URL — or an EIN, phone,
-// or email — is still flagged even inside the footer file.
+// The footer carries the intentional FFC footer standard — the permanent
+// "Supported by Free For Charity" attribution and the "Supported Charity
+// Login" hub link — the one place FFC identity legitimately survives a
+// rebrand. Allow ONLY those specific lines (the attribution text, the hub
+// link text, and the exact attribution/hub hrefs), so any other
+// freeforcharity.org URL — or an EIN, phone, or email — is still flagged
+// even inside the footer file.
 function isAllowedIdentityLine(relPath, line) {
   const normalized = relPath.split(sep).join('/')
   if (normalized !== 'src/components/footer/index.tsx') return false
   return (
-    /Built with Free For Charity/.test(line) || /href="https:\/\/freeforcharity\.org"/i.test(line)
+    /Supported by Free For Charity/.test(line) ||
+    /Supported Charity Login/.test(line) ||
+    /href="https:\/\/freeforcharity\.org(\/hub\/)?"/i.test(line)
   )
 }
 

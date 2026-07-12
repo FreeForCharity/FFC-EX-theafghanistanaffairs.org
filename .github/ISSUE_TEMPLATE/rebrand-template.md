@@ -471,7 +471,7 @@ SEO:
 10. Do NOT set alternates.canonical on the root layout. Add per-page canonicals (home, /articles, each article via generateMetadata). Give article pages their own OpenGraph/Twitter + Article JSON-LD.
 
 CONTENT & METADATA:
-11. Social links, footer (keep the "Built with Free For Charity" platform credit; replace everything else), README.md, CITATION.cff, .github/FUNDING.yml, repo description/topics.
+11. Social links, footer (keep the "Supported by Free For Charity" attribution and "Supported Charity Login" hub link; replace everything else), README.md, CITATION.cff, .github/FUNDING.yml, repo description/topics.
 
 VERIFY (paste output): npm run format && npm run lint && npm run check:drift && npm test && npm run build
 ```
