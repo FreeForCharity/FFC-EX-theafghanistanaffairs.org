@@ -49,13 +49,13 @@ You are helping a Free For Charity volunteer or charity admin stand up a new sit
 12. **Run the pre-commit gauntlet**:
 
     ```
-    npm install
-    npm run format
-    npm run lint
-    npm run check:drift   # MUST be 0 errors — includes the brand-identity gate
-    npm test
-    npm run build
-    npm run test:e2e
+    pnpm install
+    pnpm run format
+    pnpm run lint
+    pnpm run check:drift   # MUST be 0 errors — includes the brand-identity gate
+    pnpm test
+    pnpm run build
+    pnpm run test:e2e
     ```
 
     `check:drift` now hard-fails on any leftover Free For Charity identity (name,
@@ -73,7 +73,7 @@ You are helping a Free For Charity volunteer or charity admin stand up a new sit
 
 13. **Open a PR titled** `chore: initial customization for <Charity Name>` linking the onboarding issue. In the body include:
     - A checklist of every file edited
-    - Output of `npm run check:drift`
+    - Output of `pnpm run check:drift`
     - Confirmation that legal pages were reviewed by counsel
     - The production URL (or "github.io fallback only" if no domain yet)
 
