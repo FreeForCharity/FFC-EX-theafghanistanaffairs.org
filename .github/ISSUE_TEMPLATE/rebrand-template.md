@@ -473,7 +473,7 @@ SEO:
 CONTENT & METADATA:
 11. Social links, footer (keep the "Supported by Free For Charity" attribution and "Supported Charity Login" hub link; replace everything else), README.md, CITATION.cff, .github/FUNDING.yml, repo description/topics.
 
-VERIFY (paste output): npm run format && npm run lint && npm run check:drift && npm test && npm run build
+VERIFY (paste output): pnpm run format && pnpm run lint && pnpm run check:drift && pnpm test && pnpm run build
 ```
 
 `check:drift` includes a **brand-identity gate** that fails if any Free For
@@ -489,7 +489,7 @@ After Copilot completes the updates, you will need to manually:
 1. Replace logo and favicon files in `/public` directory with the assets attached to this issue
 2. Add team member photos to `/public/team/` directory with filenames matching the data files
 3. Review and adjust color scheme in `src/app/globals.css` with the hex codes provided above
-4. Test all changes locally with `npm run dev`
+4. Test all changes locally with `pnpm run dev`
 
 **Estimated time: 20-40 minutes**
 

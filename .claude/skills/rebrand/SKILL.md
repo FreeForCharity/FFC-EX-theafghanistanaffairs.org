@@ -16,7 +16,7 @@ at the end is mandatory, not optional.
 
 ## The one rule that catches everything
 
-After you think you're done, `npm run check:drift` must pass. It now enforces a
+After you think you're done, `pnpm run check:drift` must pass. It now enforces a
 **brand-identity gate**: once `siteConfig.name` differs from the template
 default, any leftover `Free For Charity`, `freeforcharity.org`, EIN `46-2471893`,
 phone `520-222-8104`, or `@freeforcharity.org` email in `src/app/**` or
@@ -163,12 +163,12 @@ Surface these to the org rather than inventing values:
 ### 8. Verify — mandatory, in order
 
 ```
-npm run format
-npm run lint
-npm run check:drift   # MUST pass — includes the brand-identity gate
-npm test
-npm run build
-npm run test:e2e
+pnpm run format
+pnpm run lint
+pnpm run check:drift   # MUST pass — includes the brand-identity gate
+pnpm test
+pnpm run build
+pnpm run test:e2e
 ```
 
 Then a belt-and-suspenders grep for anything the gate's scope doesn't cover:
