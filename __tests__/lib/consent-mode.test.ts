@@ -200,4 +200,11 @@ describe('isConfigured (placeholder guard)', () => {
     expect(isConfigured('GTM-TQ5H8HPR')).toBe(true)
     expect(isConfigured('abcdefghij')).toBe(true)
   })
+
+  it('does not reject a real ID that merely contains consecutive X characters', () => {
+    // The templated-value regex is anchored to the whole string, so an ID
+    // with six X's mid-string (followed by real characters) is configured.
+    expect(isConfigured('G-XXXXXXX1234')).toBe(true)
+    expect(isConfigured('XXXXXXXABC123')).toBe(true)
+  })
 })
