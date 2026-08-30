@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
@@ -354,10 +355,9 @@ export default function PrivacyPolicy() {
             <a href="mailto:info@theafghanistanaffairs.org" className="text-[#0062CC] underline">
               info@theafghanistanaffairs.org
             </a>{' '}
-            to exercise any of these rights; we will respond within the time limits
-            the GDPR sets. You also have the right to lodge a complaint with your national data
-            protection supervisory authority (in the UK, the Information Commissioner&apos;s
-            Office).
+            to exercise any of these rights; we will respond within the time limits the GDPR sets.
+            You also have the right to lodge a complaint with your national data protection
+            supervisory authority (in the UK, the Information Commissioner&apos;s Office).
           </p>
 
           {/* Section 9 */}
@@ -371,12 +371,12 @@ export default function PrivacyPolicy() {
           </p>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             <strong>We do not sell or share your personal information.</strong> The Afghanistan
-            Affairs does not sell personal information, and does not share it for cross-context behavioral
-            advertising, as those terms are defined by California law — and has not done so in the
-            preceding 12 months. We do not knowingly collect or sell the personal information of
-            anyone under 16. We do not collect sensitive personal information beyond what is
-            necessary to provide this website and our services, and we do not use it to infer
-            characteristics about you.
+            Affairs does not sell personal information, and does not share it for cross-context
+            behavioral advertising, as those terms are defined by California law — and has not done
+            so in the preceding 12 months. We do not knowingly collect or sell the personal
+            information of anyone under 16. We do not collect sensitive personal information beyond
+            what is necessary to provide this website and our services, and we do not use it to
+            infer characteristics about you.
           </p>
           <p className="text-[14px] text-[#666] pb-[10px] leading-[24px] font-[500]">
             <strong>Your rights.</strong> You have the right to: know what personal information we
@@ -401,9 +401,9 @@ export default function PrivacyPolicy() {
             <a href="mailto:info@theafghanistanaffairs.org" className="text-[#0062CC] underline">
               info@theafghanistanaffairs.org
             </a>
-            . We will verify your request using information associated with your
-            interactions with us, and you may use an authorized agent to submit a request on your
-            behalf. We will respond within the timeframes California law requires.
+            . We will verify your request using information associated with your interactions with
+            us, and you may use an authorized agent to submit a request on your behalf. We will
+            respond within the timeframes California law requires.
           </p>
 
           {/* Section 10 */}
