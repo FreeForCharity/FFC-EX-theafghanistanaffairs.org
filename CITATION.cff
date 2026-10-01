@@ -12,8 +12,8 @@ authors:
     family-names: Moyer
     email: clarkemoyer@freeforcharity.org
     affiliation: Free For Charity
-repository-code: 'https://github.com/FreeForCharity/FFC_Single_Page_Template'
-url: 'https://ffcworkingsite1.org'
+repository-code: 'https://github.com/FreeForCharity/FFC-EX-theafghanistanaffairs.org'
+url: 'https://theafghanistanaffairs.org'
 abstract: >-
   Single-page Next.js 16.0.7 website template built with App
   Router for Free For Charity nonprofit organization. This

@@ -3,8 +3,11 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Security Acknowledgements | Free For Charity',
-  description: 'Security Acknowledgements for Free For Charity website',
+  title: 'Security Acknowledgements',
+  description: 'Security Acknowledgements for The Afghanistan Affairs website.',
+  alternates: {
+    canonical: '/security-acknowledgements',
+  },
 }
 
 const index = () => {
@@ -12,14 +15,14 @@ const index = () => {
     <div className="pt-[130px] pb-[54px]">
       <div className="py-[27px] w-[90%] md:w-[80%] mx-auto">
         <div className="border-t-[5px] border-[#0073e6] pt-[25px]" id="lato-font">
-          <h2 className="text-[30px] leading-[30px] font-[700] text-[#333] mt-[20px] mb-[25px]">
+          <h1 className="text-[30px] leading-[30px] font-[700] text-[#333] mt-[20px] mb-[25px]">
             Security Acknowledgements
-          </h2>
+          </h1>
           <p className="mb-[20px] pb-[10px] text-[14px] font-[500] leading-[25px] text-[#666]">
-            Free For Charity would like to extend our sincere gratitude to the following security
-            researchers for their invaluable contributions in helping us keep our platform safe. By
-            responsibly disclosing vulnerabilities, they have played a crucial role in protecting
-            our users and our data.
+            The Afghanistan Affairs would like to extend our sincere gratitude to the following
+            security researchers for their invaluable contributions in helping us keep our platform
+            safe. By responsibly disclosing vulnerabilities, they have played a crucial role in
+            protecting our users and our data.
           </p>
           <div
             className="bg-[#f9f9f9] border-l-[5px] border-[#cccccc] p-[20px] mt-[30px] mb-[30px]"

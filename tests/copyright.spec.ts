@@ -37,15 +37,24 @@ test.describe('Footer Copyright Notice', () => {
     // Navigate to the homepage
     await page.goto('/')
 
-    // Find the link within the copyright notice
-    const copyrightLink = page.locator(
-      `footer p:has-text("${testConfig.copyright.searchText}") a[href="${testConfig.copyright.linkUrl}"]`
-    )
+    // Find the organization link in the footer's bottom bar
+    const copyrightLink = page.locator(`footer a[href="${testConfig.copyright.linkUrl}"]`)
 
     // Verify the link is visible
-    await expect(copyrightLink).toBeVisible()
+    await expect(copyrightLink.first()).toBeVisible()
 
     // Verify the link text
-    await expect(copyrightLink).toContainText(testConfig.copyright.linkText)
+    await expect(copyrightLink.first()).toContainText(testConfig.copyright.linkText)
+  })
+
+  test('should display the Supported Charity Login hub link', async ({ page }) => {
+    // FFC footer standard: every supported charity site links back to the
+    // supporting org's hub. Always rendered — it must never be skipped.
+    await page.goto('/')
+
+    const hubLink = page.locator(`footer a[href="${testConfig.copyright.hubUrl}"]`)
+
+    await expect(hubLink.first()).toBeVisible()
+    await expect(hubLink.first()).toContainText(testConfig.copyright.hubText)
   })
 })

@@ -13,24 +13,23 @@ describe('Footer component', () => {
     expect(footer).toBeInTheDocument()
   })
 
-  it('should display Endorsements section', () => {
-    render(<Footer />)
-    expect(screen.getByText('Endorsements')).toBeInTheDocument()
-  })
-
-  it('should display Quick Links section', () => {
+  it('should display the Quick Links section', () => {
     render(<Footer />)
     expect(screen.getByText('Quick Links')).toBeInTheDocument()
   })
 
-  it('should display Contact Us section with contact information', () => {
+  it('should display the About Us section', () => {
     render(<Footer />)
-    expect(screen.getByText('Contact Us')).toBeInTheDocument()
+    expect(screen.getByText('About Us')).toBeInTheDocument()
   })
 
-  it('should have social media links', () => {
+  it('should display a Contact section', () => {
     render(<Footer />)
-    // Check for social media links by their aria-labels or visible text
+    expect(screen.getByText('Contact')).toBeInTheDocument()
+  })
+
+  it('should have navigation links', () => {
+    render(<Footer />)
     const links = screen.getAllByRole('link')
     expect(links.length).toBeGreaterThan(0)
   })
@@ -41,18 +40,25 @@ describe('Footer component', () => {
     expect(screen.getByText(new RegExp(currentYear.toString()))).toBeInTheDocument()
   })
 
-  it('should have GuideStar profile link', () => {
+  it('should have an email contact link', () => {
     render(<Footer />)
-    const guidestarLink = screen.getByText(/GuideStar Profile/i)
-    expect(guidestarLink).toBeInTheDocument()
-  })
-
-  it('should have email contact link', () => {
-    render(<Footer />)
-    // Look for email link
     const links = screen.getAllByRole('link')
     const emailLink = links.find((link) => link.getAttribute('href')?.includes('mailto:'))
     expect(emailLink).toBeDefined()
+  })
+
+  it('always renders the permanent "Supported by" attribution in the bottom bar', () => {
+    render(<Footer />)
+    // FFC footer standard: the attribution renders unconditionally, naming
+    // the supporting org and linking to its site.
+    const attributionLink = screen.getByText('Supported by Free For Charity').closest('a')
+    expect(attributionLink).toHaveAttribute('href', 'https://freeforcharity.org')
+  })
+
+  it('always renders the Supported Charity Login link to the hub', () => {
+    render(<Footer />)
+    const hubLink = screen.getByText('Supported Charity Login').closest('a')
+    expect(hubLink).toHaveAttribute('href', 'https://freeforcharity.org/hub/')
   })
 
   it('should not have accessibility violations', async () => {

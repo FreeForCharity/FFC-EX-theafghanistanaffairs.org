@@ -2,55 +2,30 @@ import { test, expect } from '@playwright/test'
 import { testConfig } from './test.config'
 
 /**
- * Logo and Image Visibility Tests
+ * Branding / Wordmark Visibility Tests
  *
- * These tests verify that critical images are present and visible on the homepage:
- * 1. Header logo (top left corner) - validates the organization branding
- * 2. Hero section image - validates the decorative hero image is displayed
+ * This design uses a text wordmark (no image logo). These tests verify that
+ * the header wordmark is present, links to the homepage, and is repeated in
+ * the footer.
  *
  * Note: Test expectations use values from test.config.ts for easy customization
  */
 
-test.describe('Logo and Image Visibility', () => {
-  test('should display logo in header', async ({ page }) => {
-    // Navigate to the homepage
+test.describe('Header Wordmark', () => {
+  test('should display the wordmark in the header linking to home', async ({ page }) => {
     await page.goto('/')
 
-    // Find the logo in the Header
-    // The logo is in a Link element that points to "/" with img alt text
-    const headerLogo = page.locator(`header a[href="/"] img[alt="${testConfig.logo.headerAlt}"]`)
-
-    // Verify the logo exists
-    await expect(headerLogo).toBeVisible()
-
-    // Verify the logo has the correct alt text
-    await expect(headerLogo).toHaveAttribute('alt', testConfig.logo.headerAlt)
+    const brandLink = page.locator('header a[href="/"]').first()
+    await expect(brandLink).toBeVisible()
+    await expect(brandLink).toContainText(testConfig.logo.wordmarkTop)
+    await expect(brandLink).toContainText(testConfig.logo.wordmarkBottom)
   })
 
-  test('should display hero section image', async ({ page }) => {
-    // Navigate to the homepage
+  test('should repeat the wordmark in the footer', async ({ page }) => {
     await page.goto('/')
 
-    // Find the hero image
-    const heroImage = page.locator(`img[alt="${testConfig.logo.heroAlt}"]`)
-
-    // Verify the image exists
-    await expect(heroImage).toBeVisible()
-
-    // Verify the image has the correct alt text
-    await expect(heroImage).toHaveAttribute('alt', testConfig.logo.heroAlt)
-  })
-
-  test('both header logo and hero image should be present on the same page', async ({ page }) => {
-    // Navigate to the homepage
-    await page.goto('/')
-
-    // Find both images
-    const headerLogo = page.locator(`header a[href="/"] img[alt="${testConfig.logo.headerAlt}"]`)
-    const heroImage = page.locator(`img[alt="${testConfig.logo.heroAlt}"]`)
-
-    // Verify both are visible simultaneously
-    await expect(headerLogo).toBeVisible()
-    await expect(heroImage).toBeVisible()
+    const footer = page.locator('footer')
+    await expect(footer).toContainText(testConfig.logo.wordmarkTop)
+    await expect(footer).toContainText(testConfig.logo.wordmarkBottom)
   })
 })

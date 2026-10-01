@@ -71,7 +71,7 @@ If you're using Claude Code (or another coding agent), paste the prompt below in
 You are converting this Free For Charity template into a site for a specific
 501(c)(3) nonprofit. Read TEMPLATE_CUSTOMIZATION.md first — it maps every
 config field to where it surfaces. Then make the changes below as a single
-focused commit per logical step. After each step run `npm run check:drift`
+focused commit per logical step. After each step run `pnpm run check:drift`
 and report any new warnings.
 
 ## CHARITY INFORMATION
@@ -136,7 +136,7 @@ hand or use the same address for both.
      aria-labels, focus styles).
 
 8. Legal pages under src/app/ (privacy-policy, terms-of-service,
-   cookie-policy, donation-policy)
+   cookie-policy, vulnerability-disclosure-policy, security-acknowledgements)
    - REVIEW with the charity's counsel before committing. Update org name
      references.
 
@@ -168,19 +168,19 @@ hand or use the same address for both.
 
 ## VERIFICATION (run in order, fix any failure before proceeding)
 
-1. npm install
-2. npm run format
-3. npm run lint
-4. npm run check:drift ← MUST be 0 errors; ideally fewer warnings than before
-5. npm test
-6. npm run build
-7. npm run test:e2e
+1. pnpm install
+2. pnpm run format
+3. pnpm run lint
+4. pnpm run check:drift ← MUST be 0 errors; ideally fewer warnings than before
+5. pnpm test
+6. pnpm run build
+7. pnpm run test:e2e
 
 Open a PR titled `chore: initial customization for [CHARITY NAME]`. In the
 body include:
 
 - A checklist of every file you touched (drives reviewer focus)
-- Output of `npm run check:drift` (proves no new errors)
+- Output of `pnpm run check:drift` (proves no new errors)
 - Confirmation that legal pages were reviewed by counsel
 - The custom domain (or "github.io fallback only" if no domain yet)
 
@@ -258,8 +258,8 @@ The site features two primary CTAs accessible throughout the experience via glob
 
 ## Deployment
 
-- **Live Site**: [https://ffcworkingsite1.org](https://ffcworkingsite1.org)
-- **GitHub Pages**: [https://freeforcharity.github.io/FFC_Single_Page_Template/](https://freeforcharity.github.io/FFC_Single_Page_Template/)
+- **Live Site**: [https://theafghanistanaffairs.org](https://theafghanistanaffairs.org)
+- **GitHub Pages**: [https://freeforcharity.github.io/FFC-EX-theafghanistanaffairs.org/](https://freeforcharity.github.io/FFC-EX-theafghanistanaffairs.org/)
 - **Hosting**: GitHub Pages
 - **Deployment**: Automated via GitHub Actions on push to `main` branch
 
@@ -278,7 +278,7 @@ The site is live and fully functional with the following features:
 - Social media links configured (Facebook, Twitter/X, LinkedIn, GitHub)
 - Footer links fully functional with proper destinations
 - Contact information complete (email, phone, addresses)
-- Deployed to live domain: [https://ffcworkingsite1.org](https://ffcworkingsite1.org)
+- Deployed to live domain: [https://theafghanistanaffairs.org](https://theafghanistanaffairs.org)
 - Dual deployment: Custom domain and GitHub Pages
 
 ⚠️ **Known Limitations:**
@@ -313,13 +313,11 @@ The main page (`/`) is a single-page application composed of scrollable sections
 - Frequently Asked Questions
 - Team section
 
-**Legal & Policy Pages (7 Separate Routes):**
+**Legal & Policy Pages (5 Separate Routes):**
 
 - Privacy Policy (`/privacy-policy`)
 - Cookie Policy (`/cookie-policy`)
 - Terms of Service (`/terms-of-service`)
-- Donation Policy (`/donation-policy`)
-- Free For Charity Donation Policy (`/free-for-charity-donation-policy`)
 - Vulnerability Disclosure Policy (`/vulnerability-disclosure-policy`)
 - Security Acknowledgements (`/security-acknowledgements`)
 
@@ -340,13 +338,13 @@ Content such as FAQs, Team Members, and Testimonials is stored as JSON files in 
 1. Install dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 2. Run the dev server
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Visit http://localhost:3000
@@ -359,15 +357,15 @@ This project includes automated tests to ensure quality and consistency.
 
 ```bash
 # Build the site first
-npm run build
+pnpm run build
 
 # Install Playwright browsers (first time only)
-npx playwright install chromium
+pnpm exec playwright install chromium
 
 # Run tests
-npm test              # Headless mode
-npm run test:headed   # With browser visible
-npm run test:ui       # Interactive UI mode
+pnpm test              # Headless mode
+pnpm run test:headed   # With browser visible
+pnpm run test:ui       # Interactive UI mode
 ```
 
 ### Current Test Coverage
@@ -389,7 +387,7 @@ npm run test:ui       # Interactive UI mode
 **Test Configuration** (`playwright.config.ts`)
 
 - Uses system Chromium browser to avoid network download issues
-- Runs against built static site (`npm run preview`)
+- Runs against built static site (`pnpm run preview`)
 - Retries failed tests 2x in CI, 0x locally
 - Collects traces on first retry for debugging
 
@@ -491,14 +489,14 @@ per repository:
 > setup and an advanced workflow conflict, and GitHub will refuse to enable
 > default setup while the workflow exists. Use default setup only.
 
-**npm audit**
+**pnpm audit**
 
 - All dependencies are checked for security vulnerabilities
-- Run `npm audit` locally to check for known security issues
+- Run `pnpm audit` locally to check for known security issues
 - ⚠️ **Known Issues**: As of December 2025, there are 4 low severity vulnerabilities
   - Low: tmp package vulnerabilities affecting Lighthouse CI dev dependency only
   - Impact: Limited to development environment, does not affect production site
-  - Fix available via `npm audit fix --force` (may involve breaking changes)
+  - Fix available via `pnpm audit --fix` (may involve breaking changes)
   - These are being monitored and will be addressed through regular Dependabot updates
   - See [TECHNICAL_DEBT.md](./TECHNICAL_DEBT.md) for tracking and prioritization
   - See [SECURITY.md](./SECURITY.md) for detailed information and mitigation steps
@@ -513,7 +511,7 @@ The project uses separate workflows for better separation of concerns:
 
 - ✅ Runs on all pull requests and pushes
 - ✅ Node.js 20 setup
-- ✅ Dependency installation (`npm ci`)
+- ✅ Dependency installation (`pnpm install --frozen-lockfile`)
 - ✅ Code formatting check (Prettier)
 - ✅ Linting (ESLint)
 - ✅ Unit tests (Jest)
@@ -527,7 +525,7 @@ The project uses separate workflows for better separation of concerns:
 - ✅ Runs only after CI workflow completes successfully
 - ✅ Ensures all tests pass before deployment
 - ✅ Node.js 20 setup
-- ✅ Dependency installation (`npm ci`)
+- ✅ Dependency installation (`pnpm install --frozen-lockfile`)
 - ✅ Next.js build with GitHub Pages basePath
 - ✅ Static site artifact upload
 - ✅ Deployment to GitHub Pages
@@ -585,7 +583,7 @@ The following enhancements could further improve the test suite:
 - **Increased Test Coverage**: Target 25-50% coverage for critical components
 - **TypeScript Strict Mode**: Enable additional strict flags
 - **Import Organization**: Add eslint-plugin-import for import sorting
-- **npm audit**: Add automated npm audit checks to CI with failure threshold
+- **pnpm audit**: Add automated pnpm audit checks to CI with failure threshold
 
 #### Build Quality Gates
 
@@ -680,7 +678,7 @@ Both platforms provide identical workflows:
 
 **Coexistence with GitHub Pages:**
 
-- Keep GitHub Pages for production (ffcworkingsite1.org)
+- Keep GitHub Pages for production (theafghanistanaffairs.org)
 - Use Cloudflare Pages or Vercel for PR previews only
 - No conflicts between systems
 
@@ -697,10 +695,10 @@ Both platforms provide identical workflows:
 
 3. **Configure Build Settings**
    - Framework preset: Select "Next.js (Static HTML Export)"
-   - Build command: `npm run build`
+   - Build command: `pnpm run build`
    - Build output directory: `out`
    - Environment variables: Leave `NEXT_PUBLIC_BASE_PATH` unset
-     - GitHub Pages needs `/FFC_Single_Page_Template` for subdirectory routing
+     - GitHub Pages needs `/FFC-EX-theafghanistanaffairs.org` for subdirectory routing
      - Cloudflare Pages deploys to root, no basePath needed
 
 4. **Enable Preview Deployments**
@@ -729,7 +727,7 @@ If you prefer Vercel:
 3. Import this repository
 4. Configure:
    - Framework Preset: Next.js
-   - Build Command: `npm run build`
+   - Build Command: `pnpm run build`
    - Output Directory: `out`
    - Leave `NEXT_PUBLIC_BASE_PATH` unset
 5. Deploy
@@ -775,8 +773,6 @@ src/
 │   ├── globals.css                            # Global styles
 │   ├── home-page/                             # Homepage sections (single-page structure)
 │   ├── cookie-policy/                         # Cookie Policy page
-│   ├── donation-policy/                       # Donation Policy page
-│   ├── free-for-charity-donation-policy/      # Free For Charity Donation Policy page
 │   ├── privacy-policy/                        # Privacy Policy page
 │   ├── security-acknowledgements/             # Security Acknowledgements page
 │   ├── terms-of-service/                      # Terms of Service page
@@ -833,8 +829,8 @@ The site is configured for static export and deployed to GitHub Pages:
 
 **Production:**
 
-- Live at: [https://ffcworkingsite1.org](https://ffcworkingsite1.org)
-- GitHub Pages URL: [https://freeforcharity.github.io/FFC_Single_Page_Template/](https://freeforcharity.github.io/FFC_Single_Page_Template/)
+- Live at: [https://theafghanistanaffairs.org](https://theafghanistanaffairs.org)
+- GitHub Pages URL: [https://freeforcharity.github.io/FFC-EX-theafghanistanaffairs.org/](https://freeforcharity.github.io/FFC-EX-theafghanistanaffairs.org/)
 - Deployment: Automatic via GitHub Actions (`.github/workflows/deploy.yml`)
 - Trigger: Push to `main` branch
 - Build output: Static files in `./out` directory
@@ -842,8 +838,8 @@ The site is configured for static export and deployed to GitHub Pages:
 **Local preview of production build:**
 
 ```bash
-npm run build    # Build static site
-npm run preview  # Preview at http://localhost:3000
+pnpm run build    # Build static site
+pnpm run preview  # Preview at http://localhost:3000
 ```
 
 **Note:** The build process uses `output: "export"` in `next.config.ts` for static site generation compatible with GitHub Pages.
@@ -871,7 +867,7 @@ We welcome new contributors and believe fresh perspectives are invaluable! **You
 
 #### How to Get Started
 
-1. **Explore the live site:** [https://ffcworkingsite1.org](https://ffcworkingsite1.org)
+1. **Explore the live site:** [https://theafghanistanaffairs.org](https://theafghanistanaffairs.org)
 2. **Test thoroughly:** Try all features, navigation, and responsive behavior
 3. **Document findings:** Create a review issue using our template
 4. **Report issues:** File separate issues for bugs and enhancements you discover
@@ -880,7 +876,7 @@ We welcome new contributors and believe fresh perspectives are invaluable! **You
 
 Use our **Reviewer Onboarding template** to document your findings:
 
-[**Create Reviewer Onboarding Issue**](https://github.com/FreeForCharity/FFC_Single_Page_Template/issues/new?assignees=&labels=documentation%2Creview%2Conboarding&template=reviewer-onboarding.md)
+[**Create Reviewer Onboarding Issue**](https://github.com/FreeForCharity/FFC-EX-theafghanistanaffairs.org/issues/new?assignees=&labels=documentation%2Creview%2Conboarding&template=reviewer-onboarding.md)
 
 The template guides you through:
 

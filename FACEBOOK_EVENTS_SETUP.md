@@ -505,7 +505,7 @@ Before committing, perform these manual tests:
 1. **Start development server:**
 
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
 2. **Test without consent:**
@@ -563,9 +563,9 @@ These steps must be completed **outside the codebase** before implementation:
 1. Go to App Dashboard
 2. Navigate to **Settings > Basic**
 3. Note your **App ID** and **App Secret** (keep these secure)
-4. Add **App Domains:** `ffcworkingsite1.org`, `freeforcharity.github.io`
-5. Add **Privacy Policy URL:** `https://ffcworkingsite1.org/privacy-policy`
-6. Add **Terms of Service URL:** `https://ffcworkingsite1.org/terms-of-service`
+4. Add **App Domains:** `theafghanistanaffairs.org`, `freeforcharity.github.io`
+5. Add **Privacy Policy URL:** `https://theafghanistanaffairs.org/privacy-policy`
+6. Add **Terms of Service URL:** `https://theafghanistanaffairs.org/terms-of-service`
 7. Save changes
 
 #### 4. Get Page Access Token
@@ -942,23 +942,23 @@ export default Events
 
 ```bash
 # Build the site
-npm run build
+pnpm run build
 
 # Run Playwright tests
-npm run test:e2e
+pnpm run test:e2e
 
 # Or run with UI
-npm run test:e2e:ui
+pnpm run test:e2e:ui
 ```
 
 ### Run Lighthouse Performance Test
 
 ```bash
-npm run build
-npm run preview
+pnpm run build
+pnpm run preview
 
 # In another terminal
-npm run lighthouse
+pnpm run lighthouse
 ```
 
 **Acceptance criteria:**
@@ -1009,7 +1009,7 @@ The GitHub Actions workflow will:
 
 ### Verify Deployment
 
-1. Visit https://ffcworkingsite1.org
+1. Visit https://theafghanistanaffairs.org
 2. Scroll to Events section
 3. Test cookie consent flow
 4. Verify events load correctly

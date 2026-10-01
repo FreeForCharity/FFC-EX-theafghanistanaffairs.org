@@ -52,9 +52,9 @@ Kebab-case is the industry standard for SEO-friendly URLs and is explicitly reco
 **Examples:**
 
 ```
-✅ Good: https://ffcworkingsite1.org/cookie-policy
-❌ Bad:  https://ffcworkingsite1.org/CookiePolicy
-❌ Bad:  https://ffcworkingsite1.org/cookiepolicy
+✅ Good: https://theafghanistanaffairs.org/cookie-policy
+❌ Bad:  https://theafghanistanaffairs.org/CookiePolicy
+❌ Bad:  https://theafghanistanaffairs.org/cookiepolicy
 ```
 
 ### 3. Industry Standards

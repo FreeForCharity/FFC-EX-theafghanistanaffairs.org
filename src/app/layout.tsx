@@ -6,16 +6,7 @@ import CookieConsent from './../components/cookie-consent'
 import GoogleTagManager, { GoogleTagManagerNoScript } from './../components/google-tag-manager'
 import { siteConfig, siteUrl, twitterSite, cardDescription } from '@/lib/site.config'
 import { assetPath } from '@/lib/assetPath'
-import {
-  openSans,
-  lato,
-  raleway,
-  faustina,
-  cantataOne,
-  faunaOne,
-  montserrat,
-  cinzel,
-} from '@/lib/fonts'
+import { openSans, lato, faustina, playfairDisplay, notoNaskhArabic } from '@/lib/fonts'
 
 const defaultTitle = `${siteConfig.name} | ${siteConfig.tagline}`
 
@@ -38,9 +29,10 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
-  alternates: {
-    canonical: '/',
-  },
+  // NOTE: no site-wide `alternates.canonical` here. In the App Router a
+  // canonical set on the root layout is inherited by every nested route, which
+  // would point all pages at the homepage. Each route declares its own
+  // canonical instead (homepage in page.tsx, articles + policy pages locally).
   openGraph: {
     type: 'website',
     url: siteUrl('/'),
@@ -98,21 +90,13 @@ export default function RootLayout({
         <meta name="color-scheme" content="light" />
         <meta name="theme-color" content={siteConfig.themeColor} />
 
-        {/* Preconnect to external domains for faster resource loading */}
+        {/* Preconnect only to origins loaded on the initial page view. GTM is
+            the one third-party script that loads up front; Clarity and the Meta
+            Pixel load later, and only after cookie consent (see cookie-consent),
+            so preconnecting to them here would be premature. The zeffy /
+            guidestar / idealist widgets aren't used on this site at all, so
+            their old hints just wasted connections. */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.zeffy.com" />
-        <link rel="preconnect" href="https://widgets.guidestar.org" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.zeffy.com" />
-        <link rel="dns-prefetch" href="https://www.idealist.org" />
-
-        {/* Preload critical LCP image */}
-        <link
-          rel="preload"
-          as="image"
-          href={assetPath('/Images/figma-hero-img.webp')}
-          fetchPriority="high"
-        />
 
         <GoogleTagManager />
       </head>
@@ -121,12 +105,9 @@ export default function RootLayout({
           'antialiased',
           openSans.variable,
           lato.variable,
-          raleway.variable,
           faustina.variable,
-          cantataOne.variable,
-          faunaOne.variable,
-          montserrat.variable,
-          cinzel.variable,
+          playfairDisplay.variable,
+          notoNaskhArabic.variable,
         ].join(' ')}
         suppressHydrationWarning={true}
       >
@@ -140,7 +121,9 @@ export default function RootLayout({
         </a>
         {/* <PopupProvider> */}
         <Header />
-        <main id="main-content">{children}</main>
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
         <CookieConsent />
         {/* <PopupsRootClient /> */}
