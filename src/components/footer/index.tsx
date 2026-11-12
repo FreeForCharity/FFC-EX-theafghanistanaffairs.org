@@ -172,6 +172,16 @@ const Footer: React.FC = () => {
             <Link href="/privacy-policy" className="hover:text-[#c79a3b]">
               Privacy Policy
             </Link>
+            {/* Persistent consent re-entry point (withdrawing consent must
+                stay as easy as giving it): reopens the preferences modal
+                the cookie-consent banner registers on window. */}
+            <button
+              type="button"
+              onClick={() => window.openCookiePreferences?.()}
+              className="hover:text-[#c79a3b]"
+            >
+              Cookie Preferences
+            </button>
             <Link href="/terms-of-service" className="hover:text-[#c79a3b]">
               Terms of Use
             </Link>
